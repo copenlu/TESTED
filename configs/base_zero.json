@@ -1,0 +1,7 @@
+{
+    "en": {
+        "Topics": ["Vcination", "Conspiracy", "Government Trust"],
+        "Sentiments": ["positive", "negative", "other"],
+        "Hypothesis":"The topic is about {}."
+    }
+}

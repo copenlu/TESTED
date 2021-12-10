@@ -1,0 +1,17 @@
+{
+    "en": {
+        "Vacination": "We imply that the attitude of the person is <mask> towards vacination",
+        "Conspiracy": "Conspiracy theory, Yes? <mask> .",
+        "Government Trust": "We imply that the attitude of the person is <mask> towards the government"
+    },
+    "it": {
+        "Vacination": "Implica che l'atteggiamento della persona \u00e8 <mask> verso la vaccinazione",
+        "Conspiracy": "Teoria della cospirazione, s\u00ec?<mask>.",
+        "Government Trust": "Impliaiamo che l'atteggiamento della persona \u00e8 <mask> verso il governo"
+    },
+    "es": {
+        "Vacination": "Implicamos que la actitud de la persona es <mask> hacia la vacunaci\u00f3n.",
+        "Conspiracy": "Teor\u00eda de la conspiraci\u00f3n, \u00bfs\u00ed?<mask>.",
+        "Government Trust": "Implicamos que la actitud de la persona es <mask> hacia el gobierno."
+    }
+}

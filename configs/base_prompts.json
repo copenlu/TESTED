@@ -1,0 +1,7 @@
+{
+    "en": {
+        "Vacination": ["We imply that the attitude of the person is <mask> towards vaccination.", "▁positive", "▁negative"],
+        "Conspiracy": ["This is a <mask>.","▁fact", "▁lie"],
+        "Government Trust": ["We imply that the attitude of the person is <mask> towards the government.", "▁positive", "▁negative"]
+    }
+}
