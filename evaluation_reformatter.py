@@ -101,7 +101,7 @@ def reformat_data(unprocessed_path:str = '', save_path:str = "Data/evaluation_da
                     
                 data_processed.append(data_meta_updated)
             
-            success = write_jsonl(data = data_processed, data_path=save_path,data_key=data_key )
+            success = write_jsonl(data = data_processed, data_path=save_path,data_key=data_key)
             assert success > 0
     
     except RuntimeError as e:
