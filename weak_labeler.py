@@ -23,8 +23,6 @@ class dotdict(dict):
 	__delattr__ = dict.__delitem__
 
 class WeakLabeler:
-
-
 	'''
 	 Apparently because multiprocessing copies((de)serialize) instace attributes for each process, it is unable to use the generator and the model
 	'''

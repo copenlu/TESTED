@@ -63,9 +63,26 @@ def check_gpu():
     d["mem_used_per"] = d["mem_used"] * 100 / 11171
 
     if d["gpu_util"] < 15 and d["mem_used"] < 2816 :
-    	msg = 'GPU status: Idle \n'
+        msg = 'GPU status: Idle \n'
     else:
-    	msg = 'GPU status: Busy \n'
+        msg = 'GPU status: Busy \n'
 
     now = time.strftime("%c")
     return ('\nUpdated at %s\nGPU utilization: %s %%\nVRAM used: %s %%\n%s\n' % (now, d["gpu_util"],d["mem_used_per"], msg))
+
+
+def write_jsonl(data: List = [], data_path:str = '',  data_key:str = '') -> int:
+    success = False
+    try:
+        with open(f'{data_path}/{data_key}.jsonl', 'w') as outfile:
+            for line in data:
+                json.dump(line, outfile)
+                outfile.write('\n')
+
+        success = True
+    except RuntimeError as e:
+        print('Cannot Write a jsonL for data with error: ', e)
+        return success
+    return success
+
+
