@@ -49,6 +49,6 @@ class WeakLabelerSingelton:
             WeakLabelerSingelton.cuda = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             WeakLabelerSingelton.__instance = self
 
-            WeakLabelerSingelton.mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
+            WeakLabelerSingelton.mongo_client = pymongo.MongoClient(mongo_server)
             WeakLabelerSingelton.mongodb = WeakLabelerSingelton.mongo_client["Users"]
             WeakLabelerSingelton.collection = WeakLabelerSingelton.mongodb["Processed_Tweets"]

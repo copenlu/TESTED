@@ -88,7 +88,7 @@ def reformat_data(unprocessed_path:str = '', save_path:str = "Data/evaluation_da
                 hypothesis = data_meta['hypothesis']            
                     
                 data_meta_updated = {"id": text_id_unique, "id_str": str(text_id_unique), \
-                "premise": premise, "hypothesis":hypothesis , "lang":'en', 'usr': {'id': user_id_unique, "id_str": str(user_id_unique)},\
+                "premise": premise, "hypothesis":hypothesis , "lang":'en', 'user': {'id': user_id_unique, "id_str": str(user_id_unique)},\
                 "label": data_meta['label']}
                 
                 labels.append(data_meta['label'])

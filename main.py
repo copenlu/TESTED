@@ -1,9 +1,10 @@
+import os
 import argparse
 import pickle
 import json
 from typing import List
 from weak_labeler import WeakLabeler
-import os
+from env_loader import WeakLabelerSingelton
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # or any {'0', '1', '2'}
 
@@ -36,6 +37,21 @@ if __name__ == "__main__":
 	)
 
 	parser.add_argument(
+	'--mongo_db',type=str,default='Users',
+	help="The name of the MongoDB database"
+	)
+
+	parser.add_argument(
+	'--mongo_collection',type=str,default='Processed_Tweets',
+	help="The name of the MongoDB collection"
+	)
+
+	parser.add_argument(
+	'--mongo_client',type=str,default='mongodb://localhost:27017/',
+	help="The name of the MongoDB client (ip:port)"
+	)
+
+	parser.add_argument(
 	'--parallelize',type=bool,default=True,dest='parallelize',
 	help="A flag for using multiprocessing"
 	)
@@ -44,6 +60,14 @@ if __name__ == "__main__":
 
 	args = parser.parse_args()
 
+	mongo_client, mongo_db, mongo_collection  = args.mongo_client, args.mongo_db, args.mongo_collection
+
+
+	env = WeakLabelerSingelton.getInstance()
+	env.set_attr( mongo_client = mongo_client, mongodb = mongo_db, collection = mongo_collection)
+
 	annotator = WeakLabeler(model_type = args.model_name, labeler_type = args.labeler_type, \
 	dataset_path = args.dataset_path, config_path = args.config_path, parallelize = args.parallelize)
+
+
 	annotator.weak_labeler_parallel()

@@ -1,9 +1,9 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM,AutoModelForSequenceClassification
+from utils import list_segmentor, insert_scheme
 from env_loader import WeakLabelerSingelton
 import torch.multiprocessing as mp
 from collections import defaultdict
 from transformers import pipeline
-from utils import list_segmentor
 from typing import Dict, List
 from tqdm import tqdm
 import multiprocess
@@ -14,6 +14,8 @@ import os
 
 from pymongo import InsertOne, DeleteMany, ReplaceOne, UpdateOne
 from pprint import pprint
+
+from evaluation_mappings import TASK_MAPPINGS
 
 
 class dotdict(dict):
@@ -50,6 +52,11 @@ class WeakLabeler:
 		WeakLabeler.labeler_metadata['parallelize'] = parallelize
 
 		WeakLabeler.labeler_metadata = dotdict(WeakLabeler.labeler_metadata)
+
+		print(type(WeakLabeler.labeler_metadata))
+
+		self.insertion_scheme = WeakLabeler.labeler_metadata.prompts['insertion_scheme'] if WeakLabeler.labeler_metadata.prompts is not None \
+			else  WeakLabeler.labeler_metadata.zero['insertion_scheme']
 
 		# self.model_type = model_type
 		# self.labeler_type = labeler_type
@@ -115,20 +122,28 @@ class WeakLabeler:
 		except RuntimeError as e:
 			print('Cannot read the user data with error: ',e)
 
-	def data_generator(self, data_path = "Data/example_raw.json"):
+	@async_generator
+	def data_generator(self, data_path: str = "Data/example_raw.json"):
 		language_groups = {}
-		for tweets in self.read_data(data_path):
-			for tweet in tweets:
-				if tweet['lang'] not in language_groups:
-					language_groups[tweet['lang']] = []
+		for data_lines in self.read_data(data_path):
+			for data_line in data_lines:
+				if data_line['lang'] not in language_groups:
+					language_groups[data_line['lang']] = []
 
-				language_groups[tweet['lang']].append({'full_text': tweet['full_text'], \
-													   'tweet_id':tweet['id'],'lang':tweet['lang'],\
-													   'user_id':tweet['user']['id'] })
+				if 'full_text' in data_line:
+					language_groups[data_line['lang']].append({'full_text': data_line['full_text'], \
+														'tweet_id':data_line['id'],'lang':data_line['lang'],\
+														'user_id':data_line['user']['id'] })
+				else:
+					full_text = insert_scheme(data_line['premise'], data_line['hypothesis'],self.insertion_scheme)
 
-				if len(language_groups[tweet['lang']]) >= 16:
-					yield language_groups[tweet['lang']]
-					language_groups[tweet['lang']] = []
+					language_groups[data_line['lang']].append({'full_text': full_text, \
+														'tweet_id':data_line['id'],'lang':data_line['lang'],\
+														'user_id':data_line['user']['id'],'label':data_line['label']})
+
+				if len(language_groups[data_line['lang']]) >= 2:
+					yield language_groups[data_line['lang']]
+					language_groups[data_line['lang']] = []
 
 		for lang in language_groups:
 			if len(language_groups[lang]) != 0:
@@ -270,14 +285,26 @@ class WeakLabeler:
 		try:
 			env = WeakLabelerSingelton.getInstance()
 
-
 			tweets_lang = user_metas[0]['lang']
+
+			print(type(WeakLabeler.labeler_metadata))
+			print(env.__dict__)
+
 			user_metas = self.process_tweets(user_metas, WeakLabeler.labeler_metadata.labeler_type, tweets_lang)
 
 			user_ids = [user_meta['user_id'] for user_meta in user_metas]
 			tweet_ids = [user_meta['tweet_id'] for user_meta in user_metas]
 			tweet_texts = [user_meta['full_text'] for user_meta in user_metas]
 
+			if 'label' in user_metas[0]:
+				print('label present')
+				labels = [user_meta['label'] for user_meta in user_metas]
+			else:
+				print('label not present')
+				labels = None
+
+
+			print(type(WeakLabeler.labeler_metadata))
 			if 'mlm' in WeakLabeler.labeler_metadata.labeler_type.lower():
 
 				pos_lab = user_metas[0]['pos_lab']
@@ -320,7 +347,9 @@ class WeakLabeler:
 
 				user_id = user_ids[index]
 				tweet_id = tweet_ids[index]
+				label = labels[index] if labels is not None else None
 
+				results[user_id][tweet_id]['label'] = label
 				results[user_id][tweet_id]['results_processed'] = results_processed[index]
 				results[user_id][tweet_id]['labeler_type'] = WeakLabeler.labeler_metadata.labeler_type
 
@@ -343,14 +372,13 @@ class WeakLabeler:
 			updates = [{"$set":update} for update in updates]
 
 			bulk_result = self.mongo_bulk_write(queries, updates)
-			# pprint(bulk_result.bulk_api_result)
 
 		except RuntimeError as e:
 			print('Cannot process the instance with error: ', e)
 			return bulk_result
 		return bulk_result
 
-	def weak_labeler_parallel(self, num_workers = 8) -> Dict:
+	async def weak_labeler_parallel(self, num_workers = 8) -> Dict:
 		results = defaultdict(lambda: defaultdict(dict))
 
 		try:
@@ -364,6 +392,7 @@ class WeakLabeler:
 			if WeakLabeler.labeler_metadata.device >= 0:
 				torch.backends.cudnn.enabled = True
 				mp.set_start_method('spawn',force=True)
+				print("Spawning workers")
 			else:
 				mp.set_start_method('fork',force=True)
 
@@ -372,7 +401,10 @@ class WeakLabeler:
 			#reset to default after forking
 			torch.set_num_threads(4)
 
-			for user_metas in tqdm(WeakLabeler.labeler_metadata.data_generator):
+			async for ind, user_metas in tqdm(enumerate(WeakLabeler.labeler_metadata.data_generator)):
+				print(ind)
+				print(len(user_metas))
+				print("_________________________________________")
 				if len(accumulator) < num_workers:
 					accumulator.append(user_metas.copy())
 				else:
