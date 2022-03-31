@@ -3,8 +3,9 @@ import argparse
 import pickle
 import json
 from typing import List
-from weak_labeler import WeakLabeler
+from data_loader import DataLoader
 from env_loader import WeakLabelerSingelton
+from weak_labeler import WeakLabeler, weak_labeler_parallel
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # or any {'0', '1', '2'}
 
@@ -64,10 +65,15 @@ if __name__ == "__main__":
 
 
 	env = WeakLabelerSingelton.getInstance()
-	env.set_attr( mongo_client = mongo_client, mongodb = mongo_db, collection = mongo_collection)
 
-	annotator = WeakLabeler(model_type = args.model_name, labeler_type = args.labeler_type, \
-	dataset_path = args.dataset_path, config_path = args.config_path, parallelize = args.parallelize)
+	data_loader = DataLoader(args.dataset_path)
+	annotator = WeakLabeler(model_type = args.model_name, labeler_type = args.labeler_type,\
+		 config_path = args.config_path, parallelize = args.parallelize)
 
 
-	annotator.weak_labeler_parallel()
+	attribures = dict( mongo_client = mongo_client, mongodb = mongo_db, collection = mongo_collection, data_loader = data_loader)
+	print(attribures)
+	env.set_attr(**attribures)
+
+
+	weak_labeler_parallel(annotator)

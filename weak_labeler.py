@@ -1,3 +1,4 @@
+from multiprocessing.pool import ThreadPool
 from transformers import AutoTokenizer, AutoModelForMaskedLM,AutoModelForSequenceClassification
 from utils import list_segmentor, insert_scheme
 from env_loader import WeakLabelerSingelton
@@ -7,6 +8,7 @@ from transformers import pipeline
 from typing import Dict, List
 from tqdm import tqdm
 import multiprocess
+import asyncio
 import torch
 import json
 import time
@@ -45,7 +47,6 @@ class WeakLabeler:
 		WeakLabeler.labeler_metadata['model_type'] = model_type
 		WeakLabeler.labeler_metadata['labeler_type'] = labeler_type
 		WeakLabeler.labeler_metadata['data_path'] = dataset_path
-		WeakLabeler.labeler_metadata['data_generator'] = self.data_generator(dataset_path)
 		WeakLabeler.labeler_metadata['model_type'] = model_type
 		WeakLabeler.labeler_metadata['prompts'] = self.read_config(config_path) if 'mlm' in labeler_type else None
 		WeakLabeler.labeler_metadata['zero'] = self.read_config(config_path) if 'zero' in labeler_type else None
@@ -53,7 +54,6 @@ class WeakLabeler:
 
 		WeakLabeler.labeler_metadata = dotdict(WeakLabeler.labeler_metadata)
 
-		print(type(WeakLabeler.labeler_metadata))
 
 		self.insertion_scheme = WeakLabeler.labeler_metadata.prompts['insertion_scheme'] if WeakLabeler.labeler_metadata.prompts is not None \
 			else  WeakLabeler.labeler_metadata.zero['insertion_scheme']
@@ -94,60 +94,16 @@ class WeakLabeler:
 				tokenizer = AutoTokenizer.from_pretrained(model_type)
 				labeler = pipeline('zero-shot-classification', model = model, tokenizer=tokenizer, framework="pt", device = WeakLabeler.labeler_metadata.device)
 
-			env.set_attr(model, tokenizer, labeler, WeakLabeler.labeler_metadata)
+
+			attributes = dict(model=model, tokenizer=tokenizer, pipeline=labeler, labeler_metadata=WeakLabeler.labeler_metadata, insertion_scheme=self.insertion_scheme)
+			env.set_attr(**attributes)
 
 			print("Loading completed")
 
 	##################
-	###Data Loaders###
+	###Config Loaders###
 	##################
 
-	def read_data(self, dataset_path: str = '', batch_size = 1):
-		user_data = []
-		try:
-
-			batch = []
-			with open(dataset_path) as file:
-				for line in file:
-					data = json.loads(line)
-					batch.append(data)
-					if len(batch) == batch_size:
-						yield batch
-						batch = []
-
-				if len(batch) > 0:
-					yield batch
-					batch = []
-
-		except RuntimeError as e:
-			print('Cannot read the user data with error: ',e)
-
-	@async_generator
-	def data_generator(self, data_path: str = "Data/example_raw.json"):
-		language_groups = {}
-		for data_lines in self.read_data(data_path):
-			for data_line in data_lines:
-				if data_line['lang'] not in language_groups:
-					language_groups[data_line['lang']] = []
-
-				if 'full_text' in data_line:
-					language_groups[data_line['lang']].append({'full_text': data_line['full_text'], \
-														'tweet_id':data_line['id'],'lang':data_line['lang'],\
-														'user_id':data_line['user']['id'] })
-				else:
-					full_text = insert_scheme(data_line['premise'], data_line['hypothesis'],self.insertion_scheme)
-
-					language_groups[data_line['lang']].append({'full_text': full_text, \
-														'tweet_id':data_line['id'],'lang':data_line['lang'],\
-														'user_id':data_line['user']['id'],'label':data_line['label']})
-
-				if len(language_groups[data_line['lang']]) >= 2:
-					yield language_groups[data_line['lang']]
-					language_groups[data_line['lang']] = []
-
-		for lang in language_groups:
-			if len(language_groups[lang]) != 0:
-				yield language_groups[lang]
 
 	def read_config(self, config_path: str = 'configs/populated_prompts.json') -> Dict:
 		configs = None
@@ -287,25 +243,19 @@ class WeakLabeler:
 
 			tweets_lang = user_metas[0]['lang']
 
-			print(type(WeakLabeler.labeler_metadata))
-			print(env.__dict__)
-
-			user_metas = self.process_tweets(user_metas, WeakLabeler.labeler_metadata.labeler_type, tweets_lang)
+			user_metas = self.process_tweets(user_metas, env.labeler_metadata.labeler_type, tweets_lang)
 
 			user_ids = [user_meta['user_id'] for user_meta in user_metas]
 			tweet_ids = [user_meta['tweet_id'] for user_meta in user_metas]
 			tweet_texts = [user_meta['full_text'] for user_meta in user_metas]
 
 			if 'label' in user_metas[0]:
-				print('label present')
 				labels = [user_meta['label'] for user_meta in user_metas]
 			else:
-				print('label not present')
 				labels = None
 
-
-			print(type(WeakLabeler.labeler_metadata))
-			if 'mlm' in WeakLabeler.labeler_metadata.labeler_type.lower():
+			
+			if 'mlm' in env.labeler_metadata.labeler_type.lower():
 
 				pos_lab = user_metas[0]['pos_lab']
 				neg_lab = user_metas[0]['neg_lab']
@@ -317,9 +267,9 @@ class WeakLabeler:
 
 				assert(len(user_metas) == len(results_processed))
 
-			elif 'zero' in WeakLabeler.labeler_metadata.labeler_type.lower():
+			elif 'zero' in env.labeler_metadata.labeler_type.lower():
 
-				zero_meta_dict = WeakLabeler.labeler_metadata.zero
+				zero_meta_dict = env.labeler_metadata.zero
 				zero_meta_dict = zero_meta_dict[tweets_lang]
 				topics, sentiments, hypothesis_template = zero_meta_dict['Topics'],\
 															zero_meta_dict['Sentiments'], \
@@ -334,7 +284,7 @@ class WeakLabeler:
 				assert(len(user_metas) == len(results_processed))
 
 
-			elif 'generator' in WeakLabeler.labeler_metadata.labeler_type.lower():
+			elif 'generator' in env.labeler_metadata.labeler_type.lower():
 
 				# TODO: Generator pipeline was removed becase it was slow. Maybe better GPU's ?
 				annotated_tweets, primes, labels = self.process_tweets(tweet_texts)
@@ -353,7 +303,7 @@ class WeakLabeler:
 				results[user_id][tweet_id]['results_processed'] = results_processed[index]
 				results[user_id][tweet_id]['labeler_type'] = WeakLabeler.labeler_metadata.labeler_type
 
-				if 'mlm' in WeakLabeler.labeler_metadata.labeler_type:
+				if 'mlm' in env.labeler_metadata.labeler_type:
 					if user_meta['class'] not in results[user_id][tweet_id]:
 						per_class_processor = {}
 						per_class_processor['class'] = user_meta['class']
@@ -368,7 +318,7 @@ class WeakLabeler:
 						# results[user_id][tweet_id]['neg_lab'] = neg_lab
 
 			queries = [{"user_id": f"{user_id}"} for user_id in user_ids]
-			updates = [{f"{tweet_id}.{WeakLabeler.labeler_metadata.labeler_type.lower()}":results[user_ids[index]][tweet_id]} for index, tweet_id in enumerate(tweet_ids)]
+			updates = [{f"{tweet_id}.{env.labeler_metadata.labeler_type.lower()}":results[user_ids[index]][tweet_id]} for index, tweet_id in enumerate(tweet_ids)]
 			updates = [{"$set":update} for update in updates]
 
 			bulk_result = self.mongo_bulk_write(queries, updates)
@@ -378,51 +328,54 @@ class WeakLabeler:
 			return bulk_result
 		return bulk_result
 
-	async def weak_labeler_parallel(self, num_workers = 8) -> Dict:
-		results = defaultdict(lambda: defaultdict(dict))
 
-		try:
-			accumulator = []
+def weak_labeler_parallel(weak_labeler: WeakLabeler,num_workers = 8) -> Dict:
+	results = defaultdict(lambda: defaultdict(dict))
+	env = WeakLabelerSingelton.getInstance()
 
-			#A Very hacky solution: make the forker believe we are monlith to avoid deadlocks. Can change the number after forking.
-			torch.set_num_threads(1)
-			os.environ["TOKENIZERS_PARALLELISM"] = "false"
+	try:
+		accumulator = []
 
-			# Arguably base multiprocess > torch.multiprocess , which is weird
-			if WeakLabeler.labeler_metadata.device >= 0:
-				torch.backends.cudnn.enabled = True
-				mp.set_start_method('spawn',force=True)
-				print("Spawning workers")
+		#A Very hacky solution: make the forker believe we are monlith to avoid deadlocks. Can change the number after forking.
+		torch.set_num_threads(1)
+		os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+		# Arguably base multiprocess > torch.multiprocess , which is weird
+		if weak_labeler.labeler_metadata.device >= 0:
+			torch.backends.cudnn.enabled = True
+			mp.set_start_method('spawn',force=True)
+		else:
+			mp.set_start_method('fork',force=True)
+
+
+		# mp.set_sharing_strategy('file_system')
+		porcesses = ThreadPool(num_workers)
+		
+		#reset to default after forking
+		torch.set_num_threads(num_workers)
+
+		for ind, user_metas in tqdm(enumerate(env.data_loader.data_generator())):
+			if len(accumulator) < num_workers:
+				accumulator.append(user_metas.copy())
 			else:
-				mp.set_start_method('fork',force=True)
+				# async mapping is better/faster but should write a callback for compeltion
+				results = porcesses.map(weak_labeler.weak_labeler_instance, accumulator)
+				accumulator = []
+				accumulator.append(user_metas)
+				# porcesses = mp.Pool(num_workers)
+			
 
-			porcesses = mp.Pool(num_workers)
+		#reset to default thread count
+		os.environ["TOKENIZERS_PARALLELISM"] = "true"
 
-			#reset to default after forking
-			torch.set_num_threads(4)
+		for el in accumulator:
+			weak_labeler.weak_labeler_instance(el)
 
-			async for ind, user_metas in tqdm(enumerate(WeakLabeler.labeler_metadata.data_generator)):
-				print(ind)
-				print(len(user_metas))
-				print("_________________________________________")
-				if len(accumulator) < num_workers:
-					accumulator.append(user_metas.copy())
-				else:
-					# async mapping is better/faster but should write a callback for compeltion
-					porcesses.map_async(self.weak_labeler_instance, accumulator)
-					accumulator = []
-					accumulator.append(user_metas)
-
-			#reset to default thread count
-			os.environ["TOKENIZERS_PARALLELISM"] = "true"
-
-			for el in accumulator:
-				self.weak_labeler_instance(el)
-
-		except RuntimeError as e:
-			print('Cannot label with error: ', e)
-			return results
+	except RuntimeError as e:
+		print('Cannot label with error: ', e)
 		return results
+	return results
+
 
 
 

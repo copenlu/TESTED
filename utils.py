@@ -88,3 +88,5 @@ def write_jsonl(data: List = [], data_path:str = '',  data_key:str = '') -> int:
 
 def insert_scheme(str1: str, str2: str, scheme: str) -> str:
     return scheme.replace('<premise>', str1).replace('<hypothesis>', str2)
+
+

@@ -14,24 +14,30 @@ class WeakLabelerSingelton:
         return WeakLabelerSingelton.__instance
 
 
-    def set_attr(self, model = None, tokenizer = None, pipeline = None, labeler_metadata = None, mongo_client = None, mongodb = None, collection = None ):
-        if model is not None:
-            self.model = model
-        if tokenizer is not None:
-            self.tokenizer = tokenizer
+    def set_attr(self, **kwargs):
 
-        if pipeline is not None:
-            self.pipeline = pipeline
+        print(kwargs.keys())
+        if 'model' in kwargs:
+            self.model =  kwargs['model']
+        if 'tokenizer' in kwargs:
+            self.tokenizer = kwargs['tokenizer']
 
-        if labeler_metadata is not None:
-            self.labeler_metadata = labeler_metadata
+        if 'pipeline' in kwargs:
+            self.pipeline = kwargs['pipeline']
 
-        if mongo_client is not None:
-            self.mongo_client = pymongo.MongoClient(mongo_client)
-        if mongodb is not None:
-            self.mongodb = self.mongo_client[mongodb]
-        if collection is not None:
-            self.collection = self.mongodb[collection]
+        if 'labeler_metadata' in kwargs:
+            self.labeler_metadata = kwargs['labeler_metadata']
+
+        if 'mongo_client' in kwargs:
+            self.mongo_client = pymongo.MongoClient(kwargs['mongo_client'])
+        if 'mongodb' in kwargs:
+            self.mongodb = self.mongo_client[kwargs['mongodb']]
+        if 'collection' in kwargs:
+            self.collection = self.mongodb[kwargs['collection']]
+        if 'data_loader' in kwargs:
+            self.data_loader = kwargs['data_loader']
+        if 'insertion_scheme' in kwargs:
+            self.insertion_scheme = kwargs['insertion_scheme']
 
         self.cuda = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.__instance = self
