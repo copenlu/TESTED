@@ -158,9 +158,13 @@ if __name__ == "__main__":
     '--training_path',type=str,
     help="The path to the training data"
     )
+    parser.add_argument(
+    '--valid_path',type=str,default=None,
+    help="The path to the training data"
+    )
 
     parser.add_argument(
-        '--batch_size',type=int,
+        '--batch_size',type=int,default=8,
         help="The batch size used during training"
         )
 
@@ -212,6 +216,10 @@ if __name__ == "__main__":
     train_x, val_x, train_y, val_y = train_test_split(data[args.text_col],data[args.target_col] , \
                                     test_size=ratio, stratify = data[args.target_col])
 
+    if args.valid_path is not None:
+        valid_data = pd.read_csv(args.valid_path)
+        val_x, val_y = valid_data[args.text_col], valid_data[args.target_col]
+
 
     print(len(train_x), len(val_x))
 
@@ -245,7 +253,10 @@ if __name__ == "__main__":
 
     print("Validating\n")
     val_loss, val_accuracy, preds, gt = evaluate(model.to('cuda'), val_dataloader)
-    print(classification_report(torch.cat(preds, 0).cpu().numpy(), torch.cat(gt, 0).cpu().numpy()))
+
+    report_data = classification_report(torch.cat(preds, 0).cpu().numpy(), torch.cat(gt, 0).cpu().numpy(), output_dict=True)
+    aim_run["classification_report"] = report_data
+    print(report_data)
 
 
     torch.save(model, f"{os.path.join(args.model_save_path,args.experiment_name)}.pth")
