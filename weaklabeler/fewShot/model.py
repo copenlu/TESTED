@@ -9,12 +9,12 @@ from typing import List
 
 
 class Transformer_classifier(nn.Module):
-    def __init__(self, feat_extractor_name: str = '', num_lables: int = 5, hidden_list:List=[512],linear_probe:bool = True):
+    def __init__(self, feat_extractor_name: str = '', num_labels: int = 5, hidden_list:List=[512],linear_probe:bool = True):
         """Transformer Classifier
 
         Args:
             feat_extractor_name (str, optional): Name of the feature extracator from HF hub or torch Hub.
-            num_lables (int, optional): The number of labels to be predicted. Defaults to 4.
+            num_labels (int, optional): The number of labels to be predicted. Defaults to 4.
             hidden_list (List, optional): The hidden layers output. Defaults to [512].
         """        
         super(Transformer_classifier, self).__init__()
@@ -33,7 +33,7 @@ class Transformer_classifier(nn.Module):
         self.hidden_list = hidden_list
             
         self.feat_extractor = feat_extractor
-        self.num_labels = num_lables
+        self.num_labels = num_labels
         self.embeding_shape = self.get_extractor_output_shape() 
                 
         self.linear_1 = nn.Linear(self.embeding_shape, self.hidden_list[0], device=device)

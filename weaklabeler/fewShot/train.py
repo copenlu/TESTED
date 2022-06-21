@@ -62,8 +62,7 @@ def train(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader,
     trigger_times = 0
 
     train_steps_all = epochs * len(train_dataloader)
-    schedule = get_linear_schedule_with_warmup( optimizer = optimizer, num_warmup_steps = 0,
-                                num_training_steps = train_steps_all)
+    schedule = get_linear_schedule_with_warmup( optimizer = optimizer, num_warmup_steps = int(train_steps_all/10), num_training_steps = train_steps_all)
 
     for epoch_i in range(epochs):
 
@@ -83,11 +82,13 @@ def train(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader,
 
             loss = loss_fn(logits, batch_labels)
 
-            aim_run.track(loss.item() , name = "Batch_Loss", context = {'type':'train'})
+            aim_run.track(loss.item() , name = "Batch_Loss", context = {'type':'train'}, step=step)
 
             total_loss += loss.item()
 
             loss.backward()
+            # nn.utils.clip_grad_norm_(model.parameters(), max_norm=2.0, norm_type=2)
+
             optimizer.step()
             schedule.step()
 
@@ -95,7 +96,7 @@ def train(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader,
             # progress_bar.update(1)
 
         avg_train_loss = total_loss / len(train_dataloader)
-        aim_run.track(avg_train_loss , name = "Loss", context = {'type':'train'})
+        aim_run.track(avg_train_loss , name = "Loss", context = {'type':'train'}, epoch=epoch_i)
 
         if val_dataloader is not None and (epoch_i+1)%val_step == 0:
             print("Validation")
@@ -112,8 +113,8 @@ def train(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader,
 
             aim_run.track(aim.Text(results_val_str+ "\n"), name = 'log_out')
 
-            aim_run.track(val_loss , name = "Loss", context = {'type':'val'})
-            aim_run.track(val_loss , name = "Metric", context = {'type':'val'})
+            aim_run.track(val_loss , name = "Loss", context = {'type':'val'}, epoch=epoch_i)
+            aim_run.track(val_accuracy , name = "Metric", context = {'type':'val'},epoch=epoch_i)
 
 
             if abs(val_loss - the_last_loss) < 1e-5 or val_loss > the_last_loss:
