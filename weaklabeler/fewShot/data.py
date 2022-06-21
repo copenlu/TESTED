@@ -36,10 +36,14 @@ class FewShotData(Dataset):
 
     def __getitem__(self, index):
 
-        label = self.labels.values[index]
+        if self.labels is not None:
+            label = self.labels.values[index]
+            label = self.target_dict[label]
+        else:
+            label = 0
+
         data = self.data.values[index]
-        
-        label = self.target_dict[label]
+
                     
         tokenized_dataset = transformer_tok(data, self.tokenizer) 
         

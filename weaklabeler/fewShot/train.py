@@ -197,6 +197,10 @@ if __name__ == "__main__":
     parser.add_argument('--target_config_path',
                         help="Path to target config file, with the mapping from target to id")
 
+
+    parser.add_argument('--num_labels', type=int, default=None, help="Number of labels")
+    parser.add_argument('--linear_probe', action='store_true', help="Use linear probing", default=False)
+
     args = parser.parse_args()
 
 
@@ -238,7 +242,7 @@ if __name__ == "__main__":
     val_dataloader = DataLoader(val_dataset, batch_size = args.batch_size, shuffle=True, num_workers = available_workers)
 
 
-    model = Transformer_classifier(args.feat_extractor)
+    model = Transformer_classifier(feat_extractor_name = args.feat_extractor, num_labels = args.num_labels, linear_probe = args.linear_probe)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(device)

@@ -9,7 +9,7 @@ from typing import List
 
 
 class Transformer_classifier(nn.Module):
-    def __init__(self, feat_extractor_name: str = '', num_lables: int = 5, hidden_list:List=[512],):
+    def __init__(self, feat_extractor_name: str = '', num_lables: int = 5, hidden_list:List=[512],linear_probe:bool = True):
         """Transformer Classifier
 
         Args:
@@ -25,8 +25,10 @@ class Transformer_classifier(nn.Module):
         feat_extractor = AutoModel.from_pretrained(feat_extractor_name)
 
         # This can be made into a flag. But usually should be fine.
-        for param in feat_extractor.base_model.parameters():
-            param.requires_grad = False
+
+        if linear_probe:
+            for param in feat_extractor.base_model.parameters():
+                param.requires_grad = False
 
         self.hidden_list = hidden_list
             
