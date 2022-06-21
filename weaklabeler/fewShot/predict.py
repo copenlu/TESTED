@@ -110,6 +110,9 @@ if __name__ == '__main__':
     help="Path to target config file, with the mapping from target to id"
     )
 
+    parser.add_argument("--save_col", help="Name of column to save predictions")
+    
+
     args = parser.parse_args()
 
 
@@ -122,6 +125,6 @@ if __name__ == '__main__':
 
 
     print("Predicting...\n")
-    test['topic_pred'] = predict(test[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
+    test[args.save_col] = predict(test[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
 
     test.to_csv('results.csv')
