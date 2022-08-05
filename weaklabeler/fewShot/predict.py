@@ -1,3 +1,4 @@
+from random import sample
 import torch
 from torch import nn
 import torch.nn.functional as F
@@ -41,15 +42,19 @@ def predict(texts:List , model:nn.Module, target_dict: Dict = {}, tokenizer: Aut
 
     predictions = []
 
-    train_dataset = FewShotData(data = texts, labels = None, tokenizer = tokenizer, target_dict=target_dict )
+    dataset = FewShotData(data = texts, labels = None, tokenizer = tokenizer, target_dict=target_dict )
     print(target_dict)
 
-    available_workers = get_available_cpus()
-    train_dataloader = DataLoader(train_dataset, batch_size = 64, shuffle=False, num_workers = available_workers)
 
+    label_count = len(target_dict)
+    
+    available_workers = get_available_cpus()
+    dataloader = DataLoader(dataset, batch_size = 8, shuffle=False, num_workers = available_workers)
+
+    model.eval()
     with torch.inference_mode():
 
-        for batch in tqdm(train_dataloader):
+        for batch in tqdm(dataloader):
 
             batch_input = {k: v.to('cuda') for k, v in batch.items()}
             # batch_labels = batch_input['labels'].view(-1)
@@ -61,8 +66,15 @@ def predict(texts:List , model:nn.Module, target_dict: Dict = {}, tokenizer: Aut
 
             for index in range(len(probs)):
                 prob = probs[index]
-                # print(target_dict[str(torch.argmax(prob).item())])
-                predictions.append(target_dict[str(torch.argmax(prob).item())])
+
+                # create an other class for the prediction if no class has high probability
+                # print(prob.max().item(),target_dict[str(torch.argmax(prob).item())])
+                # print("_________________________________________")
+                if prob.max().item() < 0.5:
+                    predictions.append("NONE")
+                else:
+                    predictions.append(target_dict[str(torch.argmax(prob).item())])
+
 
         # inputs = [transformer_tok(text, tokenizer) for text in text_batch]
         # inputs = [{'input_ids': inp['input_ids'].cuda(),'attention_mask':inp['attention_mask'].cuda() } \
@@ -116,7 +128,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
 
-    model = torch.load(args.model_path,'cpu')
+    model = torch.load(args.model_path,'cuda')
     model.to("cuda")
 
     tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True)

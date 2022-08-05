@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92d1f74acc0dd9603f9776317ea34148753a10b645793cecc5fe2eb8798d1ea7
-size 115
+{
+  "face_masks": 0,
+  "fauci": 1,
+  "hydroxychloroquine": 2,
+  "school_closures": 3,
+  "stay_at_home_orders": 4
+}

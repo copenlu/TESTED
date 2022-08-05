@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bce11290cc18a9447538936e4032d22ee4e5fb0926379d0bd6c8ab93ec448f95
-size 234
+{
+    "en": {
+        "Topics": ["against", "favourable", "other"],
+        "Sentiments": ["positive", "negative", "neutral"],
+        "Hypothesis":"{}."
+    },
+    "insertion_scheme": "The stance toward <premise> ? <hypothesis>. "
+}

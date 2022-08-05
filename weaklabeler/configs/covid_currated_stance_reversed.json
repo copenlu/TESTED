@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f65c139b71b47f4ecf5db43c559cb88d85e253ebcc3cac8d130c9857a11d560
-size 63
+{
+      "0": "AGAINST",
+      "1": "FAVOR",
+      "2": "NONE"
+}

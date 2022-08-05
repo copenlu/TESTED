@@ -31,6 +31,13 @@ python weaklabeler/fewShot/train.py --experiment_name fewShot_currated --feat_ex
 
 ```
 
+To train the model on the few-shot dataset, use the following command
+
+```
+python weaklabeler/fewShot/train.py --experiment_name fewShot_training_topic_new --feat_extractor roberta-base --training_path weaklabeler/Data/Golden_set/few_shot_training_data_renamed.csv  --valid_path weaklabeler/Data/psudo_annotated_few.csv --model_save_path weaklabeler/models/ --num_labels 19 --batch_size 16 --epochs 10 --learning_rate 0.0001 --shot_num 1197 --val_step 100 --text_col Text --target_col Class --target_config_path weaklabeler/configs/psudo_annotated_few_config.json
+```
+
+
 In order to use the the zero-shot or prompt based classifers several `configs` have to be opened, please consult the example under the `weaklabeler/configs`. An example for annotation looks like
 the follwoing:
 

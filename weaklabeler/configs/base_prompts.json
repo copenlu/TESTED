@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3f59ef3bc2bca90b787b9a1efc13327047688d4155b38e1bfe90c2e438948e6d
-size 353
+{
+    "en": {
+        "Vacination": ["We imply that the attitude of the person is <mask> towards vaccination.", "▁positive", "▁negative"],
+        "Conspiracy": ["This is a <mask>.","▁fact", "▁lie"],
+        "Government Trust": ["We imply that the attitude of the person is <mask> towards the government.", "▁positive", "▁negative"]
+    }
+}

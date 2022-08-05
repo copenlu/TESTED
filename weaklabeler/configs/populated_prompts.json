@@ -1,3 +1,996 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70d8f7dddb8e2a1f97b68ceace5f4bbf66d2779f3cd3c79576e67619b53215ce
-size 46130
+{
+    "en": {
+        "Vacination": [
+            "We imply that the attitude of the person is <mask> towards vaccination.",
+            "\u2581positive",
+            "\u2581negative"
+        ],
+        "Conspiracy": [
+            "This is a <mask>.",
+            "\u2581fact",
+            "\u2581lie"
+        ],
+        "Government Trust": [
+            "We imply that the attitude of the person is <mask> towards the government.",
+            "\u2581positive",
+            "\u2581negative"
+        ]
+    },
+    "it": {
+        "Vacination": [
+            "Impliaiamo che l'atteggiamento della persona \u00e8 <mask> verso la vaccinazione.",
+            "00 positivo",
+            "Zione negativa"
+        ],
+        "Conspiracy": [
+            "Questo \u00e8 un <mask>.",
+            "Istante",
+            "Zecca"
+        ],
+        "Government Trust": [
+            "Impliaiamo che l'atteggiamento della persona \u00e8 <mask> verso il governo.",
+            "00 positivo",
+            "Zione negativa"
+        ]
+    },
+    "es": {
+        "Vacination": [
+            "Implicamos que la actitud de la persona es <mask> hacia la vacunaci\u00f3n.",
+            "Untar",
+            "\u00d1il"
+        ],
+        "Conspiracy": [
+            "Esto es un <mask>.",
+            "Hecho",
+            "Onerse"
+        ],
+        "Government Trust": [
+            "Implicamos que la actitud de la persona es <mask> hacia el gobierno.",
+            "Untar",
+            "\u00d1il"
+        ]
+    },
+    "de": {
+        "Vacination": [
+            "Wir sind implizieren, dass die Haltung der Person <mask> zur Impfung ist.",
+            "Positiv",
+            "Negativ"
+        ],
+        "Conspiracy": [
+            "Dies ist ein <mask>.",
+            "\u00c4ndert",
+            "L\u00fcgen"
+        ],
+        "Government Trust": [
+            "Wir bedeuten, dass die Haltung der Person <mask> der Regierung ist.",
+            "Positiv",
+            "Negativ"
+        ]
+    },
+    "fr": {
+        "Vacination": [
+            "Nous impliquons que l'attitude de la personne est <mask> vers la vaccination.",
+            "▁Oldal",
+            "▁Negativ"
+        ],
+        "Conspiracy": [
+            "Ceci est un <mask>.",
+            "Fait",
+            "\u00c7a ment"
+        ],
+        "Government Trust": [
+            "Nous impliquons que l'attitude de la personne est <mask> envers le gouvernement.",
+            "▁Oldal",
+            "▁Negativ"
+        ]
+    },
+    "ja": {
+        "Vacination": [
+            "\u79c1\u305f\u3061\u306f\u4eba\u306e\u614b\u5ea6\u304c\u4e88\u9632\u63a5\u7a2e\u306b\u5411\u304b\u3063\u3066<mask>\u3067\u3042\u308b\u3053\u3068\u3092\u610f\u5473\u3057\u307e\u3059\u3002",
+            "\u967d\u6027",
+            "\u5426\u5b9a\u7684\u306a"
+        ],
+        "Conspiracy": [
+            "\u3053\u308c\u306f<mask>\u3067\u3059\u3002",
+            "\u5b58\u5728\u3057\u306a\u3044",
+            "\u3046\u305d\u3092\u3064\u304f"
+        ],
+        "Government Trust": [
+            "\u79c1\u305f\u3061\u306f\u4eba\u306e\u614b\u5ea6\u304c\u653f\u5e9c\u306b\u5411\u304b\u3063\u3066<mask>\u3067\u3042\u308b\u3053\u3068\u3092\u610f\u5473\u3057\u307e\u3059\u3002",
+            "\u967d\u6027",
+            "\u5426\u5b9a\u7684\u306a"
+        ]
+    },
+    "pt": {
+        "Vacination": [
+            "Implicamos que a atitude da pessoa \u00e9 <mask>para a vacina\u00e7\u00e3o.",
+            "_positivo",
+            "_negativo"
+        ],
+        "Conspiracy": [
+            "Isso \u00e9 um <mask>.",
+            "\u00c2",
+            "Mentir"
+        ],
+        "Government Trust": [
+            "Implicamos que a atitude da pessoa \u00e9 <mask>para com o governo.",
+            "_positivo",
+            "_negativo"
+        ]
+    },
+    "ca": {
+        "Vacination": [
+            "Implicem que l'actitud de la persona \u00e9s <mask> cap a la vacunaci\u00f3.",
+            "\u00a1Positiu",
+            "Negativa"
+        ],
+        "Conspiracy": [
+            "Aix\u00f2 \u00e9s un <mask>.",
+            "De fet",
+            "Ia mentida"
+        ],
+        "Government Trust": [
+            "Implicem que l'actitud de la persona \u00e9s <mask> cap al govern.",
+            "\u00a1Positiu",
+            "Negativa"
+        ]
+    },
+    "und": {
+        "Vacination": [],
+        "Conspiracy": [],
+        "Government Trust": []
+    },
+    "ar": {
+        "Vacination": [
+            "\u0646\u062d\u0646 \u064a\u0639\u0646\u064a \u0623\u0646 \u0645\u0648\u0642\u0641 \u0627\u0644\u0634\u062e\u0635 \u0647\u0648 <mask> \u0646\u062d\u0648 \u0627\u0644\u062a\u0637\u0639\u064a\u0645.",
+            "\u0627\u064a\u062c\u0627\u0628\u064a",
+            "\u0633\u0644\u0628\u064a\u0629"
+        ],
+        "Conspiracy": [
+            "\u0647\u0630\u0627 <mask>.",
+            "\u062d\u0642\u064a\u0642\u0629",
+            "\u0643\u0630\u0628\u0629"
+        ],
+        "Government Trust": [
+            "\u0646\u062d\u0646 \u064a\u0639\u0646\u064a \u0623\u0646 \u0645\u0648\u0642\u0641 \u0627\u0644\u0634\u062e\u0635 \u0647\u0648 <mask> \u0646\u062d\u0648 \u0627\u0644\u062d\u0643\u0648\u0645\u0629.",
+            "\u0627\u064a\u062c\u0627\u0628\u064a",
+            "\u0633\u0644\u0628\u064a\u0629"
+        ]
+    },
+    "fa": {
+        "Vacination": [
+            "\u0645\u0627 \u062d\u0627\u06a9\u06cc \u0627\u0632 \u0622\u0646 \u0647\u0633\u062a\u06cc\u0645 \u06a9\u0647 \u0646\u06af\u0631\u0634 \u0641\u0631\u062f <mask> \u0628\u0647 \u0633\u0645\u062a \u0648\u0627\u06a9\u0633\u06cc\u0646\u0627\u0633\u06cc\u0648\u0646 \u0627\u0633\u062a.",
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u06cc"
+        ],
+        "Conspiracy": [
+            "\u0627\u06cc\u0646 \u06cc\u06a9 <mask> \u0627\u0633\u062a.",
+            "\u0648\u0627\u0642\u0639\u06cc\u062a",
+            "\u062f\u0631\u0648\u063a \u06af\u0641\u062a\u0646"
+        ],
+        "Government Trust": [
+            "\u0645\u0627 \u0628\u0647 \u0627\u06cc\u0646 \u0645\u0639\u0646\u06cc \u0627\u0633\u062a \u06a9\u0647 \u0646\u06af\u0631\u0634 \u0641\u0631\u062f <mask> \u0628\u0647 \u0633\u0645\u062a \u062f\u0648\u0644\u062a \u0627\u0633\u062a.",
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u06cc"
+        ]
+    },
+    "th": {
+        "Vacination": [
+            "\u0e40\u0e23\u0e32\u0e1a\u0e2d\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e19\u0e31\u0e22\u0e27\u0e48\u0e32\u0e17\u0e31\u0e28\u0e19\u0e04\u0e15\u0e34\u0e02\u0e2d\u0e07\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e19\u0e31\u0e49\u0e19\u0e04\u0e37\u0e2d <mask> \u0e15\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e09\u0e35\u0e14\u0e27\u0e31\u0e04\u0e0b\u0e35\u0e19",
+            "\u0e1a\u0e27\u0e01",
+            "\u0e25\u0e1a"
+        ],
+        "Conspiracy": [
+            "\u0e19\u0e35\u0e48\u0e04\u0e37\u0e2d <mask>",
+            "\u0e04\u0e27\u0e32\u0e21\u0e08\u0e23\u0e34\u0e07",
+            "\u0e42\u0e01\u0e2b\u0e01"
+        ],
+        "Government Trust": [
+            "\u0e40\u0e23\u0e32\u0e1a\u0e2d\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e19\u0e31\u0e22\u0e27\u0e48\u0e32\u0e17\u0e31\u0e28\u0e19\u0e04\u0e15\u0e34\u0e02\u0e2d\u0e07\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e19\u0e31\u0e49\u0e19\u0e04\u0e37\u0e2d <mask> \u0e15\u0e48\u0e2d\u0e23\u0e31\u0e10\u0e1a\u0e32\u0e25",
+            "\u0e1a\u0e27\u0e01",
+            "\u0e25\u0e1a"
+        ]
+    },
+    "ru": {
+        "Vacination": [
+            "\u041c\u044b \u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u0435\u043c, \u0447\u0442\u043e \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f <mask> \u043a \u0432\u0430\u043a\u0446\u0438\u043d\u0430\u0446\u0438\u0438.",
+            "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e",
+            "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u043e"
+        ],
+        "Conspiracy": [
+            "\u042d\u0442\u043e <mask>.",
+            "\u0424\u0430\u043a\u0442",
+            "\u041b\u0435\u0447\u044c"
+        ],
+        "Government Trust": [
+            "\u041c\u044b \u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u0435\u043c, \u0447\u0442\u043e \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f <mask> \u043a \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0443.",
+            "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u043e",
+            "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u043e"
+        ]
+    },
+    "tr": {
+        "Vacination": [
+            "Ki\u015finin tutumunun <mask> a\u015f\u0131lamaya do\u011fru oldu\u011fu anlam\u0131na gelir.",
+            "Olumlu",
+            "Usul\u00fcm"
+        ],
+        "Conspiracy": [
+            "Bu bir <mask>.",
+            "Nitle",
+            "Lanet"
+        ],
+        "Government Trust": [
+            "Ki\u015finin tutumunun <mask> h\u00fck\u00fcmete do\u011fru oldu\u011fu anlam\u0131na gelir.",
+            "Olumlu",
+            "Usul\u00fcm"
+        ]
+    },
+    "hi": {
+        "Vacination": [
+            "\u0939\u092e \u0907\u0938 \u092c\u093e\u0924 \u0915\u093e \u092e\u0924\u0932\u092c \u0930\u0916\u0924\u0947 \u0939\u0948\u0902 \u0915\u093f \u0935\u094d\u092f\u0915\u094d\u0924\u093f \u0915\u093e \u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923 <mask> \u091f\u0940\u0915\u093e\u0915\u0930\u0923 \u0915\u0940 \u0913\u0930 \u0939\u0948\u0964",
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ],
+        "Conspiracy": [
+            "\u092f\u0939 \u090f\u0915 <mask> \u0939\u0948\u0964",
+            "\u0924\u0925\u094d\u092f",
+            "\u091d\u0942\u0920"
+        ],
+        "Government Trust": [
+            "\u0939\u092e \u0926\u0930\u094d\u0936\u093e\u0924\u0947 \u0939\u0948\u0902 \u0915\u093f \u0935\u094d\u092f\u0915\u094d\u0924\u093f \u0915\u093e \u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923 <mask> \u0938\u0930\u0915\u093e\u0930 \u0915\u0940 \u0913\u0930 \u0939\u0948\u0964",
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ]
+    },
+    "ht": {
+        "Vacination": [
+            "Nou vle di ke atitid la nan moun nan se <mask> nan direksyon pou pran vaksen an.",
+            "Pozitif",
+            "Negatif"
+        ],
+        "Conspiracy": [
+            "Sa a se yon <mask>.",
+            "Reyalite",
+            "Manti"
+        ],
+        "Government Trust": [
+            "Nou vle di ke atitid la nan moun nan se <mask> nan direksyon pou gouv\u00e8nman an.",
+            "Pozitif",
+            "Negatif"
+        ]
+    },
+    "nl": {
+        "Vacination": [
+            "We impliceren dat de houding van de persoon <mask> ten opzichte van vaccinatie is.",
+            "@ Positief",
+            "Egneer"
+        ],
+        "Conspiracy": [
+            "Dit is een <mask>.",
+            "Het feit",
+            "Leugen"
+        ],
+        "Government Trust": [
+            "We impliceren dat de houding van de persoon <mask> ten opzichte van de overheid is.",
+            "@ Positief",
+            "Egneer"
+        ]
+    },
+    "in": {
+        "Vacination": [],
+        "Conspiracy": [],
+        "Government Trust": []
+    },
+    "zh": {
+        "Vacination": [],
+        "Conspiracy": [],
+        "Government Trust": []
+    },
+    "fi": {
+        "Vacination": [
+            "Meill\u00e4 tarkoitamme, ett\u00e4 henkil\u00f6n asenne on <mask> kohti rokotusta.",
+            "Positiivinen",
+            "Negatiivinen"
+        ],
+        "Conspiracy": [
+            "T\u00e4m\u00e4 on <mask>.",
+            "Tosiasiallinen",
+            "Valhe"
+        ],
+        "Government Trust": [
+            "Meill\u00e4 tarkoitamme, ett\u00e4 henkil\u00f6n asenne on <mask> kohti hallitusta.",
+            "Positiivinen",
+            "Negatiivinen"
+        ]
+    },
+    "lt": {
+        "Vacination": [
+            "Mes rei\u0161kia, kad asmens po\u017ei\u016bris yra <mask> link vakcinacijos.",
+            "Teigiama",
+            "Neigiama"
+        ],
+        "Conspiracy": [
+            "Tai yra <mask>.",
+            "Fakstu. \\ T",
+            "El"
+        ],
+        "Government Trust": [
+            "Mes rei\u0161kia, kad asmens po\u017ei\u016bris yra <mask> link vyriausyb\u0117s.",
+            "Teigiama",
+            "Neigiama"
+        ]
+    },
+    "no": {
+        "Vacination": [
+            "Vi inneb\u00e6rer at holdningen til personen er <mask> mot vaksinasjon.",
+            "\u00a7",
+            "Negativt"
+        ],
+        "Conspiracy": [
+            "Dette er en <mask>.",
+            "Faktisk",
+            "LIE"
+        ],
+        "Government Trust": [
+            "Vi inneb\u00e6rer at holdningen til personen er <mask> mot regjeringen.",
+            "\u00a7",
+            "Negativt"
+        ]
+    },
+    "tl": {
+        "Vacination": [
+            "Ipinahiwatig namin na ang saloobin ng tao ay <mask> patungo sa pagbabakuna.",
+            "Positibo",
+            "Negatibo"
+        ],
+        "Conspiracy": [
+            "Ito ay isang <mask>.",
+            "Katunayan",
+            "Kasinungalingan"
+        ],
+        "Government Trust": [
+            "Ipinapahiwatig namin na ang saloobin ng tao ay <mask> patungo sa pamahalaan.",
+            "Positibo",
+            "Negatibo"
+        ]
+    },
+    "ur": {
+        "Vacination": [
+            "\u06c1\u0645 \u0627\u0633 \u0628\u0627\u062a \u06a9\u0627 \u06cc\u0642\u06cc\u0646 \u06a9\u0631\u062a\u06d2 \u06c1\u06cc\u06ba \u06a9\u06c1 \u0634\u062e\u0635 \u06a9\u0627 \u0631\u0648\u06cc\u06c1 <mask> \u0648\u06cc\u06a9\u0633\u06cc\u0646 \u06a9\u06cc \u0637\u0631\u0641 \u06c1\u06d2.",
+            "\u0645\u062b\u0644\u062b",
+            "\u0645\u0646\u0641\u06cc"
+        ],
+        "Conspiracy": [
+            "\u06cc\u06c1 \u0627\u06cc\u06a9 <mask> \u06c1\u06d2.",
+            "\u062d\u0642\u06cc\u0642\u062a \u06cc\u06c1 \u06c1\u06d2",
+            "\u062c\u06be\u0648\u0679 \u0628\u0648\u0644\u0627"
+        ],
+        "Government Trust": [
+            "\u06c1\u0645 \u0627\u0633 \u0628\u0627\u062a \u06a9\u0627 \u06cc\u0642\u06cc\u0646 \u06a9\u0631\u062a\u06d2 \u06c1\u06cc\u06ba \u06a9\u06c1 \u0634\u062e\u0635 \u06a9\u0627 \u0631\u0648\u06cc\u06c1 <mask> \u062d\u06a9\u0648\u0645\u062a \u06a9\u06cc \u0637\u0631\u0641 \u06c1\u06d2.",
+            "\u0645\u062b\u0644\u062b",
+            "\u0645\u0646\u0641\u06cc"
+        ]
+    },
+    "et": {
+        "Vacination": [
+            "Me t\u00e4hendame, et isiku suhtumine on <mask> vaktsineerimise suunas.",
+            "Tus",
+            "\u25a0 negatiivne"
+        ],
+        "Conspiracy": [
+            "See on <mask>.",
+            "Fakt",
+            "Tus"
+        ],
+        "Government Trust": [
+            "Me t\u00e4hendame, et inimese suhtumine on <mask> valitsuse suunas.",
+            "Tus",
+            "\u25a0 negatiivne"
+        ]
+    },
+    "da": {
+        "Vacination": [
+            "Vi indeb\u00e6rer, at personens holdning er <mask> mod vaccination.",
+            "It positivt.",
+            "Negativt."
+        ],
+        "Conspiracy": [
+            "Dette er en <mask>.",
+            "FACT.",
+            "\u2021"
+        ],
+        "Government Trust": [
+            "Vi indeb\u00e6rer, at personens holdning er <mask> mod regeringen.",
+            "It positivt.",
+            "Negativt."
+        ]
+    },
+    "sv": {
+        "Vacination": [
+            "Vi inneb\u00e4r att personens inst\u00e4llning \u00e4r <mask> mot vaccination.",
+            "Positiv",
+            "Iv\u00e4g"
+        ],
+        "Conspiracy": [
+            "Detta \u00e4r en <mask>.",
+            "Fakta",
+            "Are"
+        ],
+        "Government Trust": [
+            "Vi inneb\u00e4r att personens inst\u00e4llning \u00e4r <mask> mot regeringen.",
+            "Positiv",
+            "Iv\u00e4g"
+        ]
+    },
+    "ro": {
+        "Vacination": [
+            "Implic\u0103m c\u0103 atitudinea persoanei este <mask> fa\u021b\u0103 de vaccinare.",
+            "Pozitiv",
+            "\u00ab"
+        ],
+        "Conspiracy": [
+            "Acesta este <mask>.",
+            "De fapt",
+            "O minciun\u0103"
+        ],
+        "Government Trust": [
+            "Implic\u0103m c\u0103 atitudinea persoanei este <mask> fa\u021b\u0103 de guvern.",
+            "Pozitiv",
+            "\u00ab"
+        ]
+    },
+    "ko": {
+        "Vacination": [
+            "\uc6b0\ub9ac\ub294 \uadf8 \uc0ac\ub78c\uc758 \ud0dc\ub3c4\uac00 \uc608\ubc29 \uc811\uc885\uc744 \ud5a5\ud55c \uac83\uc784\uc744 \uc554\uc2dc\ud569\ub2c8\ub2e4.",
+            "\uae0d\uc815\uc801\uc774\ub2e4",
+            "\ubd80\uc815"
+        ],
+        "Conspiracy": [
+            "\uc774\uac83\uc740 <mask>\uc785\ub2c8\ub2e4.",
+            "\uc0ac\uc2e4",
+            "\uac70\uc9d3\ub9d0"
+        ],
+        "Government Trust": [
+            "\uc6b0\ub9ac\ub294 \uadf8 \uc0ac\ub78c\uc758 \ud0dc\ub3c4\uac00 \uc815\ubd80\ucabd\uc73c\ub85c <mask>\ub77c\ub294 \uac83\uc744 \uc554\uc2dc\ud569\ub2c8\ub2e4.",
+            "\uae0d\uc815\uc801\uc774\ub2e4",
+            "\ubd80\uc815"
+        ]
+    },
+    "cs": {
+        "Vacination": [
+            "Implikujeme, \u017ee postoj osoby je <mask> sm\u011brem k o\u010dkov\u00e1n\u00ed.",
+            "Pozitivn\u00ed",
+            "Negativn\u00ed"
+        ],
+        "Conspiracy": [
+            "To je <mask>.",
+            "Fakt",
+            "Lh\u00e1t"
+        ],
+        "Government Trust": [
+            "Implikujeme, \u017ee postoj osoby je <mask> sm\u011brem k vl\u00e1d\u011b.",
+            "Pozitivn\u00ed",
+            "Negativn\u00ed"
+        ]
+    },
+    "pl": {
+        "Vacination": [
+            "Sugerujemy, \u017ce postawa osoby jest <mask> w kierunku szczepienia.",
+            "Pozytywne",
+            "Ona negatywny"
+        ],
+        "Conspiracy": [
+            "To jest <mask>.",
+            "Fakt",
+            "K\u0142ama\u0107"
+        ],
+        "Government Trust": [
+            "Sugerujemy, \u017ce postawa osoby jest <mask> wobec rz\u0105du.",
+            "Pozytywne",
+            "Ona negatywny"
+        ]
+    },
+    "eu": {
+        "Vacination": [
+            "Pertsonaaren jarrera <mask> txertoa lortzeko bidean dela esan nahi dugu.",
+            "~ Positibo",
+            "5 negatibo"
+        ],
+        "Conspiracy": [
+            "Hau da <mask>.",
+            "Izua",
+            "- Gezur"
+        ],
+        "Government Trust": [
+            "Pertsonaaren jarrera <mask> gobernuaren aldera dagoenean esan nahi dugu.",
+            "~ Positibo",
+            "5 negatibo"
+        ]
+    },
+    "iw": {
+        "Vacination": [
+            "\u05d0\u05e0\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05db\u05d9 \u05d4\u05d9\u05d7\u05e1 \u05e9\u05dc \u05d4\u05d0\u05d3\u05dd \u05d4\u05d5\u05d0 <mask> \u05dc\u05e7\u05e8\u05d0\u05ea \u05d7\u05d9\u05e1\u05d5\u05df.",
+            "\u05d7\u05d9\u05d5\u05d1\u05d9",
+            "\u05e9\u05dc\u05d9\u05dc\u05d9"
+        ],
+        "Conspiracy": [
+            "\u05d6\u05d4\u05d5 <mask>.",
+            "\u05e2\u05d5\u05d1\u05d3\u05d4",
+            "\u05e9\u05e7\u05e8"
+        ],
+        "Government Trust": [
+            "\u05d0\u05e0\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05db\u05d9 \u05d4\u05d9\u05d7\u05e1 \u05e9\u05dc \u05d4\u05d0\u05d3\u05dd \u05d4\u05d5\u05d0 <mask> \u05dc\u05db\u05d9\u05d5\u05d5\u05df \u05d4\u05de\u05de\u05e9\u05dc\u05d4.",
+            "\u05d7\u05d9\u05d5\u05d1\u05d9",
+            "\u05e9\u05dc\u05d9\u05dc\u05d9"
+        ]
+    },
+    "uk": {
+        "Vacination": [
+            "\u041c\u0438 \u043c\u0430\u0454\u043c\u043e \u043d\u0430 \u0443\u0432\u0430\u0437\u0456, \u0449\u043e \u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043b\u044e\u0434\u0438\u043d\u0438 \u0454 <mask> \u0434\u043e \u0432\u0430\u043a\u0446\u0438\u043d\u0430\u0446\u0456\u0457.",
+            "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0438\u0439",
+            "\u041d\u0435\u0433\u0430\u0442\u0438\u0432\u043d\u0438\u0439"
+        ],
+        "Conspiracy": [
+            "\u0426\u0435 <mask>.",
+            "\u0424\u0430\u043a\u0442",
+            "\u0411\u0440\u0435\u0445\u043d\u044f"
+        ],
+        "Government Trust": [
+            "\u041c\u0438 \u043c\u0430\u0454\u043c\u043e \u043d\u0430 \u0443\u0432\u0430\u0437\u0456, \u0449\u043e \u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043b\u044e\u0434\u0438\u043d\u0438 \u0454 <mask> \u0434\u043e \u0443\u0440\u044f\u0434\u0443.",
+            "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0438\u0439",
+            "\u041d\u0435\u0433\u0430\u0442\u0438\u0432\u043d\u0438\u0439"
+        ]
+    },
+    "hu": {
+        "Vacination": [
+            "Azt jelentj\u00fck, hogy a szem\u00e9ly hozz\u00e1\u00e1ll\u00e1sa <mask> a vakcin\u00e1z\u00e1s fel\u00e9.",
+            "Pozit\u00edv",
+            "Negat\u00edv"
+        ],
+        "Conspiracy": [
+            "Ez egy <mask>.",
+            "T\u00e9ny",
+            "Hazugs\u00e1g"
+        ],
+        "Government Trust": [
+            "Azt jelentj\u00fck, hogy a szem\u00e9ly hozz\u00e1\u00e1ll\u00e1sa <mask> a korm\u00e1ny fel\u00e9.",
+            "Pozit\u00edv",
+            "Negat\u00edv"
+        ]
+    },
+    "cy": {
+        "Vacination": [
+            "Rydym yn awgrymu bod agwedd y person yn <mask> tuag at frechu.",
+            "Ennyn cadarnhaol",
+            "\u25a0 Negyddol"
+        ],
+        "Conspiracy": [
+            "Mae hwn yn <mask>.",
+            "\\ T",
+            "Ire"
+        ],
+        "Government Trust": [
+            "Rydym yn awgrymu bod agwedd y person yn <mask> tuag at y llywodraeth.",
+            "Ennyn cadarnhaol",
+            "\u25a0 Negyddol"
+        ]
+    },
+    "lv": {
+        "Vacination": [
+            "M\u0113s dom\u0101jam, ka personas attieksme ir <mask> uz vakcin\u0101ciju.",
+            "Pozit\u012bvi",
+            "Negat\u012bvs"
+        ],
+        "Conspiracy": [
+            "Tas ir <mask>.",
+            "Fakts",
+            "Gul\u0113t"
+        ],
+        "Government Trust": [
+            "M\u0113s nor\u0101d\u0101m, ka personas attieksme ir <mask> pret vald\u012bbu.",
+            "Pozit\u012bvi",
+            "Negat\u012bvs"
+        ]
+    },
+    "el": {
+        "Vacination": [
+            "\u03a5\u03c0\u03bf\u03bd\u03bf\u03bf\u03cd\u03bc\u03b5 \u03cc\u03c4\u03b9 \u03b7 \u03c3\u03c4\u03ac\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03b1\u03c4\u03cc\u03bc\u03bf\u03c5 \u03b5\u03af\u03bd\u03b1\u03b9 <mask> \u03c0\u03c1\u03bf\u03c2 \u03c4\u03bf\u03bd \u03b5\u03bc\u03b2\u03bf\u03bb\u03b9\u03b1\u03c3\u03bc\u03cc.",
+            "\u0398\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2",
+            "\u0391\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc"
+        ],
+        "Conspiracy": [
+            "\u0391\u03c5\u03c4\u03cc \u03b5\u03af\u03bd\u03b1\u03b9 \u03ad\u03bd\u03b1 <mask>.",
+            "\u0393\u03b5\u03b3\u03bf\u03bd\u03cc\u03c2",
+            "L"
+        ],
+        "Government Trust": [
+            "\u03a5\u03c0\u03bf\u03bd\u03bf\u03bf\u03cd\u03bc\u03b5 \u03cc\u03c4\u03b9 \u03b7 \u03c3\u03c4\u03ac\u03c3\u03b7 \u03c4\u03bf\u03c5 \u03b1\u03c4\u03cc\u03bc\u03bf\u03c5 \u03b5\u03af\u03bd\u03b1\u03b9 <mask> \u03c0\u03c1\u03bf\u03c2 \u03c4\u03b7\u03bd \u03ba\u03c5\u03b2\u03ad\u03c1\u03bd\u03b7\u03c3\u03b7.",
+            "\u0398\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2",
+            "\u0391\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc"
+        ]
+    },
+    "vi": {
+        "Vacination": [
+            "Ch\u00fang t\u00f4i ng\u1ee5 \u00fd r\u1eb1ng th\u00e1i \u0111\u1ed9 c\u1ee7a ng\u01b0\u1eddi \u0111\u00f3 l\u00e0 <mask> h\u01b0\u1edbng t\u1edbi ti\u00eam ch\u1ee7ng.",
+            "T\u00edch c\u1ef1c",
+            "\u00cdt \u00e2m"
+        ],
+        "Conspiracy": [
+            "\u0110\u00e2y l\u00e0 m\u1ed9t <mask>.",
+            "\u00cdCH",
+            "\u00ca"
+        ],
+        "Government Trust": [
+            "Ch\u00fang t\u00f4i ng\u1ee5 \u00fd r\u1eb1ng th\u00e1i \u0111\u1ed9 c\u1ee7a ng\u01b0\u1eddi \u0111\u00f3 l\u00e0 <mask> \u0111\u1ed1i v\u1edbi ch\u00ednh ph\u1ee7.",
+            "T\u00edch c\u1ef1c",
+            "\u00cdt \u00e2m"
+        ]
+    },
+    "sl": {
+        "Vacination": [
+            "Ponujamo, da je odnos osebe <mask> proti cepljenju.",
+            "Pozitivno",
+            "\""
+        ],
+        "Conspiracy": [
+            "To je <mask>.",
+            "Pravzaprav",
+            "Que."
+        ],
+        "Government Trust": [
+            "Ponujamo, da je odnos osebe <mask> proti vladi.",
+            "Pozitivno",
+            "\""
+        ]
+    },
+    "ne": {
+        "Vacination": [
+            "\u0939\u093e\u092e\u0940 \u092f\u094b \u0938\u0902\u0915\u0947\u0924 \u0917\u0930\u094d\u0926\u091b\u094c\u0902 \u0915\u093f \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0915\u094b \u092e\u0928\u094b\u0935\u0943\u0924\u094d\u0924\u093f <mask> \u092d\u094b\u0915\u093e\u0909\u0928\u0915\u094b \u0932\u093e\u0917\u093f \u0916\u094b\u092a\u0924\u093f\u0930 \u091b\u0964",
+            "Supp",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ],
+        "Conspiracy": [
+            "\u092f\u094b <mask> \u091b\u0964",
+            ") \u0924\u0925\u094d\u092f",
+            "Ed \u091d\u0942\u091f\u094b"
+        ],
+        "Government Trust": [
+            "\u0939\u093e\u092e\u0940 \u092f\u094b \u0938\u0902\u0915\u0947\u0924 \u0917\u0930\u094d\u0926\u091b\u094c\u0902 \u0915\u093f \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0915\u094b \u092e\u0928\u094b\u0935\u0943\u0924\u094d\u0924\u093f <mask> \u0938\u0930\u0915\u093e\u0930\u0924\u0930\u094d\u092b <mask> \u091b\u0964",
+            "Supp",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ]
+    },
+    "am": {
+        "Vacination": [
+            "\u12e8\u130d\u1208\u1230\u1261 \u12a0\u1235\u1270\u1233\u1230\u1265 <mask>> \u12c8\u12f0 \u12ad\u1275\u1263\u1275 \u12a5\u1295\u12f0\u1206\u1295\u1295 \u1290\u12cd.",
+            "\u12a0\u12ce\u1295\u1273\u12ca",
+            "\u12a0\u134d\u122b\u123d"
+        ],
+        "Conspiracy": [
+            "\u12ed\u1205 <mask>> \u1290\u12cd.",
+            "\u12a5\u12cd",
+            "\u12cd\u1238\u1275"
+        ],
+        "Government Trust": [
+            "\u12e8\u130d\u1208\u1230\u1261 \u12a0\u1235\u1270\u1233\u1230\u1265 <mask> \u12c8\u12f0 \u1218\u1295\u130d\u1235\u1270\u12cd\u1235 \u1290\u12cd \u121b\u1208\u1275 \u1290\u12cd.",
+            "\u12a0\u12ce\u1295\u1273\u12ca",
+            "\u12a0\u134d\u122b\u123d"
+        ]
+    },
+    "is": {
+        "Vacination": [
+            "Vi\u00f0 leggjum til a\u00f0 vi\u00f0horf mannsins s\u00e9 <mask> til b\u00f3lusetningar.",
+            "J\u00f3ga",
+            "Neikv\u00e6\u00f0"
+        ],
+        "Conspiracy": [
+            "\u00deetta er <mask>.",
+            "_ Sta\u00f0reynd",
+            "L\u00e6g\u00f0 er"
+        ],
+        "Government Trust": [
+            "Vi\u00f0 leggjum til a\u00f0 vi\u00f0horf mannsins s\u00e9 <mask> gagnvart stj\u00f3rnv\u00f6ldum.",
+            "J\u00f3ga",
+            "Neikv\u00e6\u00f0"
+        ]
+    },
+    "te": {
+        "Vacination": [
+            "\u0c2e\u0c47\u0c2e\u0c41 \u0c35\u0c4d\u0c2f\u0c15\u0c4d\u0c24\u0c3f \u0c2f\u0c4a\u0c15\u0c4d\u0c15 \u0c35\u0c48\u0c16\u0c30\u0c3f <braccination \u0c35\u0c48\u0c2a\u0c41\u0c17\u0c3e \u0c09\u0c02\u0c1f\u0c41\u0c02\u0c26\u0c3f.",
+            "\u0c38\u0c3e\u0c28\u0c41\u0c15\u0c42\u0c32",
+            "\u0c2a\u0c4d\u0c30\u0c24\u0c3f\u0c15\u0c42\u0c32"
+        ],
+        "Conspiracy": [
+            "\u0c07\u0c26\u0c3f \u0c12\u0c15 <mask>.",
+            "\u0c35\u0c3e\u0c38\u0c4d\u0c24\u0c35\u0c3e\u0c28\u0c3f\u0c15\u0c3f",
+            "\u0c05\u0c2c\u0c26\u0c4d\u0c27\u0c02"
+        ],
+        "Government Trust": [
+            "\u0c2e\u0c47\u0c2e\u0c41 \u0c35\u0c4d\u0c2f\u0c15\u0c4d\u0c24\u0c3f \u0c2f\u0c4a\u0c15\u0c4d\u0c15 \u0c35\u0c48\u0c16\u0c30\u0c3f <br> \u0c2a\u0c4d\u0c30\u0c2d\u0c41\u0c24\u0c4d\u0c35\u0c3e\u0c28\u0c3f\u0c15\u0c3f.",
+            "\u0c38\u0c3e\u0c28\u0c41\u0c15\u0c42\u0c32",
+            "\u0c2a\u0c4d\u0c30\u0c24\u0c3f\u0c15\u0c42\u0c32"
+        ]
+    },
+    "ta": {
+        "Vacination": [
+            "\u0ba8\u0baa\u0bb0\u0bbf\u0ba9\u0bcd \u0bae\u0ba9\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bcd\u0bae\u0bc8 <mask> \u0ba4\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bc2\u0b9a\u0bbf \u0ba8\u0bcb\u0b95\u0bcd\u0b95\u0bbf.",
+            "Q \u0ba8\u0bc7\u0bb0\u0bcd\u0bae\u0bb1\u0bc8",
+            "\u0ba9\u0bcd \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bae\u0bb1\u0bc8"
+        ],
+        "Conspiracy": [
+            "\u0b87\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 <mask>.",
+            "Fact \u0b89\u0ba3\u0bcd\u0bae\u0bc8",
+            "Le"
+        ],
+        "Government Trust": [
+            "\u0ba8\u0baa\u0bb0\u0bbf\u0ba9\u0bcd \u0bae\u0ba9\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bcd\u0bae\u0bc8 <mask> \u0b85\u0bb0\u0b9a\u0bbe\u0b99\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0ba8\u0bcb\u0b95\u0bcd\u0b95\u0bbf.",
+            "Q \u0ba8\u0bc7\u0bb0\u0bcd\u0bae\u0bb1\u0bc8",
+            "\u0ba9\u0bcd \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bae\u0bb1\u0bc8"
+        ]
+    },
+    "si": {
+        "Vacination": [
+            "\u0db4\u0dd4\u0daf\u0dca\u0d9c\u0dbd\u0dba\u0dcf\u0d9c\u0dda \u0d86\u0d9a\u0dbd\u0dca\u0db4\u0dba <mask> \u0d91\u0db1\u0dca\u0db1\u0dad \u0dc3\u0db3\u0dc4\u0dcf \u0db6\u0dc0 \u0d85\u0db4\u0dd2 \u0d87\u0d9f\u0dc0\u0dd9\u0db8\u0dd4.",
+            "\u0db0\u0db1\u0dcf\u0dad\u0dca\u0db8\u0d9a",
+            "\u0dab\u0dcf\u0dad\u0dca\u0db8\u0d9a"
+        ],
+        "Conspiracy": [
+            "\u0db8\u0dd9\u0dba <mask>.",
+            "\u0dc3\u0dad\u0dca\u0dba",
+            "\u0db6\u0ddc\u0dbb\u0dd4"
+        ],
+        "Government Trust": [
+            "\u0db4\u0dd4\u0daf\u0dca\u0d9c\u0dbd\u0dba\u0dcf\u0d9c\u0dda \u0d86\u0d9a\u0dbd\u0dca\u0db4\u0dba \u0dbb\u0da2\u0dba \u0daf\u0dd9\u0dc3\u0da7 \u0db6\u0dc0 \u0d85\u0db4\u0dd2 \u0d87\u0d9f\u0dc0 \u0d9c\u0db1\u0dd2\u0db8\u0dd4.",
+            "\u0db0\u0db1\u0dcf\u0dad\u0dca\u0db8\u0d9a",
+            "\u0dab\u0dcf\u0dad\u0dca\u0db8\u0d9a"
+        ]
+    },
+    "sr": {
+        "Vacination": [
+            "\u041c\u0438 \u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043c\u043e \u0434\u0430 \u0458\u0435 \u0441\u0442\u0430\u0432 \u043e\u0441\u043e\u0431\u0435 <mask> \u043f\u0440\u0435\u043c\u0430 \u0432\u0430\u043a\u0446\u0438\u043d\u0430\u0446\u0438\u0458\u0438.",
+            "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u0430\u043d",
+            "\u041d\u0435\u0433\u0430\u0442\u0438\u0432\u0430\u043d"
+        ],
+        "Conspiracy": [
+            "\u041e\u0432\u043e \u0458\u0435 <mask>.",
+            "\u0423\u0432\u0440\u0435\u0434\u0430",
+            "\u041b\u0430\u0436"
+        ],
+        "Government Trust": [
+            "\u041f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0438\u0458\u0435\u0432\u0430\u043c\u043e \u0434\u0430 \u0458\u0435 \u0441\u0442\u0430\u0432 \u043e\u0441\u043e\u0431\u0435 <mask> \u043f\u0440\u0435\u043c\u0430 \u0432\u043b\u0430\u0434\u0438.",
+            "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u0430\u043d",
+            "\u041d\u0435\u0433\u0430\u0442\u0438\u0432\u0430\u043d"
+        ]
+    },
+    "mr": {
+        "Vacination": [
+            "\u0906\u092e\u094d\u0939\u0940 \u0905\u0938\u0947 \u0938\u0942\u091a\u093f\u0924 \u0915\u0930\u0924\u094b \u0915\u0940 \u0935\u094d\u092f\u0915\u094d\u0924\u0940\u091a\u093e \u0926\u0943\u0937\u094d\u091f\u0940\u0915\u094b\u0928 <mask> \u0932\u0938\u0940\u0915\u0930\u0923 \u0926\u093f\u0936\u0947\u0928\u0947 \u0906\u0939\u0947.",
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u092e\u0940 \u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ],
+        "Conspiracy": [
+            "\u0939\u0947 \u090f\u0915 <mask> \u0906\u0939\u0947.",
+            "\u0916\u0930\u0902",
+            "Lie"
+        ],
+        "Government Trust": [
+            "\u0906\u092e\u094d\u0939\u0940 \u0905\u0938\u0947 \u0938\u0942\u091a\u093f\u0924 \u0915\u0930\u0924\u094b \u0915\u0940 \u0935\u094d\u092f\u0915\u094d\u0924\u0940\u091a\u093e \u0926\u0943\u0937\u094d\u091f\u0940\u0915\u094b\u0928 <mask> \u0938\u0930\u0915\u093e\u0930\u0915\u0921\u0947 \u0906\u0939\u0947.",
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u092e\u0940 \u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915"
+        ]
+    },
+    "bg": {
+        "Vacination": [
+            "\u041d\u0438\u0435 \u043f\u0440\u0435\u0434\u043f\u043e\u043b\u0430\u0433\u0430\u043c\u0435, \u0447\u0435 \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435\u0442\u043e \u043d\u0430 \u0447\u043e\u0432\u0435\u043a\u0430 \u0435 <mask> \u043a\u044a\u043c \u0432\u0430\u043a\u0441\u0438\u043d\u0430\u0446\u0438\u044f\u0442\u0430.",
+            "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u0435\u043d",
+            "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u0435\u043d"
+        ],
+        "Conspiracy": [
+            "\u0422\u043e\u0432\u0430 \u0435 <mask>.",
+            "\u0424\u0430\u043a\u0442",
+            "\u041b\u044a\u0436\u0430"
+        ],
+        "Government Trust": [
+            "\u041d\u0438\u0435 \u043f\u0440\u0435\u0434\u043f\u043e\u043b\u0430\u0433\u0430\u043c\u0435, \u0447\u0435 \u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435\u0442\u043e \u043d\u0430 \u0447\u043e\u0432\u0435\u043a\u0430 \u0435 <mask> \u043a\u044a\u043c \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u0441\u0442\u0432\u043e\u0442\u043e.",
+            "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u0435\u043d",
+            "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u0435\u043d"
+        ]
+    },
+    "ml": {
+        "Vacination": [
+            "\u0d35\u0d3e\u0d15\u0d4d\u0d38\u0d3f\u0d28\u0d47\u0d37\u0d28\u0d4d <mask> \u0d0e\u0d28\u0d4d\u0d28 \u0d2e\u0d28\u0d4b\u0d2d\u0d3e\u0d35\u0d02 \u0d1e\u0d19\u0d4d\u0d19\u0d7e \u0d38\u0d42\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41.",
+            "\u0d2a\u0d4b\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d40\u0d35\u0d4d",
+            "Veen \u0d28\u0d46\u0d17\u0d31\u0d4d\u0d31\u0d40\u0d35\u0d4d"
+        ],
+        "Conspiracy": [
+            "\u0d07\u0d24\u0d4a\u0d30\u0d41 <mask> \u0d06\u0d23\u0d4d.",
+            "\u0d35\u0d38\u0d4d\u0d24\u0d41\u0d24",
+            "\u0d15\u0d33\u0d4d\u0d33\u0d02"
+        ],
+        "Government Trust": [
+            "\u0d35\u0d4d\u0d2f\u0d15\u0d4d\u0d24\u0d3f\u0d2f\u0d41\u0d1f\u0d46 \u0d2e\u0d28\u0d4b\u0d2d\u0d3e\u0d35\u0d02 <mask> \u0d38\u0d7c\u0d15\u0d4d\u0d15\u0d3e\u0d30\u0d3f\u0d28\u0d4b\u0d1f\u0d4d \u0d1e\u0d19\u0d4d\u0d19\u0d7e \u0d38\u0d42\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41.",
+            "\u0d2a\u0d4b\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d40\u0d35\u0d4d",
+            "Veen \u0d28\u0d46\u0d17\u0d31\u0d4d\u0d31\u0d40\u0d35\u0d4d"
+        ]
+    },
+    "kn": {
+        "Vacination": [
+            "\u0cb5\u0ccd\u0caf\u0c95\u0ccd\u0ca4\u0cbf\u0caf \u0cb5\u0cb0\u0ccd\u0ca4\u0ca8\u0cc6 <mask> \u0cb2\u0cb8\u0cbf\u0c95\u0cc6\u0c97\u0cc6 \u0cb8\u0c82\u0cac\u0c82\u0ca7\u0cbf\u0cb8\u0cbf\u0ca6\u0c82\u0ca4\u0cc6 \u0ca8\u0cbe\u0cb5\u0cc1 \u0cb8\u0cc2\u0c9a\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0cc7\u0cb5\u0cc6.",
+            "\u0ca7\u0ca8\u0cbe\u0ca4\u0ccd\u0cae\u0c95",
+            "\u0c8b\u0ca3\u0cbe\u0ca4\u0ccd\u0cae\u0c95"
+        ],
+        "Conspiracy": [
+            "\u0c87\u0ca6\u0cc1 <mask>.",
+            "\u0cb5\u0cbe\u0cb8\u0ccd\u0ca4\u0cb5\u0cb5\u0cbe\u0c97\u0cbf",
+            "\u0c87"
+        ],
+        "Government Trust": [
+            "\u0cb5\u0ccd\u0caf\u0c95\u0ccd\u0ca4\u0cbf\u0caf \u0cb5\u0cb0\u0ccd\u0ca4\u0ca8\u0cc6\u0caf\u0cc1 \u0cb8\u0cb0\u0ccd\u0c95\u0cbe\u0cb0\u0ca6 \u0c95\u0ca1\u0cc6\u0c97\u0cc6 <mask>.",
+            "\u0ca7\u0ca8\u0cbe\u0ca4\u0ccd\u0cae\u0c95",
+            "\u0c8b\u0ca3\u0cbe\u0ca4\u0ccd\u0cae\u0c95"
+        ]
+    },
+    "gu": {
+        "Vacination": [
+            "\u0a85\u0aae\u0ac7 \u0ab8\u0ac2\u0a9a\u0ab5\u0acd\u0aaf\u0ac1\u0a82 \u0a95\u0ac7 \u0ab5\u0acd\u0aaf\u0a95\u0acd\u0aa4\u0abf\u0aa8\u0ac1\u0a82 \u0ab5\u0ab2\u0aa3 <mask> \u0ab0\u0ab8\u0ac0\u0a95\u0ab0\u0aa3 \u0aa4\u0ab0\u0aab \u0a9b\u0ac7.",
+            "\u0ab9\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95",
+            "\u0aa8\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95"
+        ],
+        "Conspiracy": [
+            "\u0a86 \u0a8f\u0a95 <mask> \u0a9b\u0ac7.",
+            "\u0ab9\u0a95\u0ac0\u0a95\u0aa4",
+            "\u0a9c\u0ac2\u0aa0\u0abe\u0aa3\u0ac1\u0a82"
+        ],
+        "Government Trust": [
+            "\u0a85\u0aae\u0ac7 \u0ab8\u0ac2\u0a9a\u0abf\u0aa4 \u0a95\u0ab0\u0ac0\u0a8f \u0a9b\u0ac0\u0a8f \u0a95\u0ac7 \u0ab5\u0acd\u0aaf\u0a95\u0acd\u0aa4\u0abf\u0aa8\u0ac1\u0a82 \u0ab5\u0ab2\u0aa3 <mask> \u0aa4\u0ab0\u0aab\u0ac7\u0aa3 \u0a95\u0ab0\u0ac7 \u0a9b\u0ac7.",
+            "\u0ab9\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95",
+            "\u0aa8\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95"
+        ]
+    },
+    "or": {
+        "Vacination": [
+            "\u0b06\u0b2e\u0b47 \u0b38\u0b42\u0b1a\u0b3e\u0b07\u0b1b\u0b41 \u0b2f\u0b47 \u0b2c\u0b4d\u0b5f\u0b15\u0b4d\u0b24\u0b3f\u0b19\u0b4d\u0b15 \u0b2e\u0b28\u0b4b\u0b2d\u0b3e\u0b2c \u0b39\u0b47\u0b09\u0b1b\u0b3f <mask> \u0b1f\u0b40\u0b15\u0b3e\u0b15\u0b30\u0b23 \u0b06\u0b21\u0b15\u0b41 |",
+            "\u0b38\u0b15\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15",
+            "\u0b28\u0b15\u0b3e\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15"
+        ],
+        "Conspiracy": [
+            "\u0b0f\u0b39\u0b3e \u0b0f\u0b15 <mask>\u0964",
+            "Fact",
+            "\u0b2e\u0b3f\u0b1b"
+        ],
+        "Government Trust": [
+            "\u0b06\u0b2e\u0b47 \u0b38\u0b42\u0b1a\u0b3e\u0b07\u0b1b\u0b41 \u0b2f\u0b47 \u0b2c\u0b4d\u0b5f\u0b15\u0b4d\u0b24\u0b3f\u0b30 \u0b2e\u0b28\u0b4b\u0b2d\u0b3e\u0b2c \u0b39\u0b47\u0b09\u0b1b\u0b3f <mask> \u0b38\u0b30\u0b15\u0b3e\u0b30 \u0b06\u0b21\u0b15\u0b41 |",
+            "\u0b38\u0b15\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15",
+            "\u0b28\u0b15\u0b3e\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15"
+        ]
+    },
+    "ps": {
+        "Vacination": [
+            "\u0645\u0648\u0696 \u067e\u0647 \u06ab\u0648\u062a\u0647 \u06a9\u0648\u0648 \u0686\u06d0 \u062f \u0648\u0627\u06a9\u0633\u06cc\u0646 \u0686\u0644\u0646\u062f <mask> \u062f \u0648\u0627\u06a9\u0633\u06cc\u0646 \u067e\u0647 \u0644\u0648\u0631.",
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u064a"
+        ],
+        "Conspiracy": [
+            "\u062f\u0627 \u06cc\u0648 <mask> \u062f\u06cc.",
+            "\"\u062d\u0642\u06cc\u0642\u062a",
+            "\u062f\u0631\u0648\u063a"
+        ],
+        "Government Trust": [
+            "\u0645\u0648\u0696 \u067e\u0647 \u06ab\u0648\u062a\u0647 \u06a9\u0648\u0648 \u0686\u06d0 \u062f \u062f\u0648\u0644\u062a \u0686\u0644\u0646\u062f <mask> \u062f \u062f\u0648\u0644\u062a \u067e\u0647 \u0644\u0648\u0631.",
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u064a"
+        ]
+    },
+    "bn": {
+        "Vacination": [
+            "\u0986\u09ae\u09b0\u09be \u09ac\u09c1\u099d\u09bf \u09af\u09c7 \u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u09b0 \u09ae\u09a8\u09cb\u09ad\u09be\u09ac <mask> \u099f\u09bf\u0995\u09be \u09a6\u09bf\u0995\u09c7\u0964",
+            "\u0987\u09a4\u09bf\u09ac\u09be\u099a\u0995",
+            "\u09a8\u09c7\u09a4\u09bf\u09ac\u09be\u099a\u0995"
+        ],
+        "Conspiracy": [
+            "\u098f\u099f\u09bf \u098f\u0995\u099f\u09bf <mask>\u0964",
+            "\u09b8\u09a4\u09cd\u09af\u09bf",
+            "\u09ae\u09bf\u09a5\u09cd\u09af\u09be \u0995\u09a5\u09be"
+        ],
+        "Government Trust": [
+            "\u0986\u09ae\u09b0\u09be \u09ac\u09c1\u099d\u09bf \u09af\u09c7 \u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u09b0 \u09ae\u09a8\u09cb\u09ad\u09be\u09ac <mask> \u09b8\u09b0\u0995\u09be\u09b0\u09c7\u09b0 \u09a6\u09bf\u0995\u09c7\u0964",
+            "\u0987\u09a4\u09bf\u09ac\u09be\u099a\u0995",
+            "\u09a8\u09c7\u09a4\u09bf\u09ac\u09be\u099a\u0995"
+        ]
+    },
+    "pa": {
+        "Vacination": [
+            "\u0a05\u0a38\u0a40\u0a02 \u0a38\u0a70\u0a15\u0a47\u0a24 \u0a15\u0a30\u0a26\u0a47 \u0a39\u0a3e\u0a02 \u0a15\u0a3f \u0a35\u0a3f\u0a05\u0a15\u0a24\u0a40 \u0a26\u0a3e \u0a30\u0a35\u0a71\u0a08\u0a06 \u0a1f\u0a40\u0a15\u0a3e\u0a15\u0a30\u0a23 \u0a35\u0a71\u0a32 <mask> \u0a39\u0a48.",
+            "\u0a38\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15",
+            "It \u0a28\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15"
+        ],
+        "Conspiracy": [
+            "\u0a07\u0a39 \u0a07\u0a71\u0a15 <mask> \u0a39\u0a48.",
+            "\u0a24\u0a71\u0a25",
+            "Live"
+        ],
+        "Government Trust": [
+            "\u0a05\u0a38\u0a40\u0a02 \u0a38\u0a70\u0a15\u0a47\u0a24 \u0a15\u0a30\u0a26\u0a47 \u0a39\u0a3e\u0a02 \u0a15\u0a3f \u0a35\u0a3f\u0a05\u0a15\u0a24\u0a40 \u0a26\u0a3e \u0a30\u0a35\u0a71\u0a08\u0a06 \u0a38\u0a30\u0a15\u0a3e\u0a30 \u0a35\u0a71\u0a32 <mask> \u0a39\u0a48.",
+            "\u0a38\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15",
+            "It \u0a28\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15"
+        ]
+    },
+    "my": {
+        "Vacination": [
+            "\u101c\u1030\u1010\u1005\u103a \u1026\u1038 \u104f\u101e\u1018\u1031\u102c\u1011\u102c\u1038\u101e\u100a\u103a\u1000\u102c\u1000\u103d\u101a\u103a\u1006\u1031\u1038\u1006\u102e\u101e\u102d\u102f\u1037 \u1026\u1038 \u1010\u100a\u103a\u101e\u100a\u1037\u103a\u101e\u1018\u1031\u102c\u1011\u102c\u1038\u1000\u102d\u102f\u1006\u102d\u102f\u101c\u102d\u102f\u101e\u100a\u103a\u104b",
+            "\u1021\u1015\u103c\u102f\u101e\u1018\u1031\u102c",
+            "\u1021\u1014\u102f\u1010\u103a\u101c\u1000\u1039\u1001\u100f\u102c"
+        ],
+        "Conspiracy": [
+            "\u1012\u102b\u1000 <mask> \u104b",
+            "\u1021\u1001\u103b\u1000\u103a\u1021\u101c\u1000\u103a",
+            "\u101c\u102d\u1019\u103a"
+        ],
+        "Government Trust": [
+            "\u101c\u1030\u1010\u1005\u103a \u1026\u1038 \u104f\u101e\u1018\u1031\u102c\u1011\u102c\u1038\u101e\u100a\u103a\u1021\u1005\u102d\u102f\u1038\u101b\u1006\u102e\u101e\u102d\u102f\u1037 \u1026\u1038 \u1010\u100a\u103a\u101e\u100a\u1037\u103a\u101e\u1018\u1031\u102c\u1011\u102c\u1038\u1000\u102d\u102f\u1006\u102d\u102f\u101c\u102d\u102f\u101e\u100a\u103a\u104b",
+            "\u1021\u1015\u103c\u102f\u101e\u1018\u1031\u102c",
+            "\u1021\u1014\u102f\u1010\u103a\u101c\u1000\u1039\u1001\u100f\u102c"
+        ]
+    },
+    "ka": {
+        "Vacination": [
+            "\u10e9\u10d5\u10d4\u10dc \u10d5\u10d2\u10e3\u10da\u10d8\u10e1\u10ee\u10db\u10dd\u10d1\u10d7, \u10e0\u10dd\u10db \u10de\u10d8\u10e0\u10d8\u10e1 \u10d3\u10d0\u10db\u10dd\u10d9\u10d8\u10d3\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0 <mask> \u10d5\u10d0\u10e5\u10ea\u10d8\u10dc\u10d0\u10ea\u10d8\u10d8\u10e1 \u10db\u10d8\u10db\u10d0\u10e0\u10d7.",
+            "\u10d3\u10d0\u10d3\u10d4\u10d1\u10d8\u10d7\u10d8",
+            "\u10e3\u10d0\u10e0\u10e7\u10dd\u10e4\u10d8\u10d7\u10d8"
+        ],
+        "Conspiracy": [
+            "\u10d4\u10e1 \u10d0\u10e0\u10d8\u10e1 <mask>.",
+            "Fact\u10d0\u10da\u10d8",
+            "\u10db\u10dd\u10e2\u10e7\u10e3\u10d4\u10d1\u10d0"
+        ],
+        "Government Trust": [
+            "\u10e9\u10d5\u10d4\u10dc \u10d2\u10e3\u10da\u10d8\u10e1\u10ee\u10db\u10dd\u10d1\u10d7, \u10e0\u10dd\u10db \u10de\u10d8\u10e0\u10d8\u10e1 \u10d3\u10d0\u10db\u10dd\u10d9\u10d8\u10d3\u10d4\u10d1\u10e3\u10da\u10d4\u10d1\u10d0 <mask> \u10db\u10d7\u10d0\u10d5\u10e0\u10dd\u10d1\u10d8\u10e1 \u10db\u10d8\u10db\u10d0\u10e0\u10d7.",
+            "\u10d3\u10d0\u10d3\u10d4\u10d1\u10d8\u10d7\u10d8",
+            "\u10e3\u10d0\u10e0\u10e7\u10dd\u10e4\u10d8\u10d7\u10d8"
+        ]
+    },
+    "sd": {
+        "Vacination": [
+            "\u0627\u0633\u0627\u0646 \u0627\u0646 \u062c\u0648 \u0645\u0637\u0644\u0628 \u0627\u0647\u0648 \u0622\u0647\u064a \u062a\u0647 \u0645\u0627\u06bb\u0647\u0648 \u062c\u0648 \u0631\u0648\u064a\u0648 <mask> \u0648\u064a\u06aa\u0633\u064a\u0646\u0634\u0646 \u068f\u0627\u0646\u0647\u0646.",
+            "\u00ab\u0645\u062b\u0628\u062a",
+            "raity"
+        ],
+        "Conspiracy": [
+            "\u0647\u064a \u0647\u06aa <mask> \u0622\u0647\u064a.",
+            "_",
+            "\u068d"
+        ],
+        "Government Trust": [
+            "\u0627\u0633\u0627\u0646 \u0627\u0646 \u062c\u0648 \u0645\u0637\u0644\u0628 \u0627\u0647\u0648 \u0622\u0647\u064a \u062a\u0647 \u0645\u0627\u06bb\u0647\u0648 \u062c\u0648 \u0631\u0648\u064a\u0648 \u0622\u0647\u064a <mask> \u062d\u06aa\u0648\u0645\u062a \u062c\u064a \u0637\u0631\u0641.",
+            "\u00ab\u0645\u062b\u0628\u062a",
+            "raity"
+        ]
+    },
+    "ckb": {
+        "Vacination": [],
+        "Conspiracy": [],
+        "Government Trust": []
+    },
+    "hy": {
+        "Vacination": [
+            "\u0544\u0565\u0576\u0584 \u0565\u0576\u0569\u0561\u0564\u0580\u0578\u0582\u0574 \u0565\u0576\u0584, \u0578\u0580 \u0561\u0576\u0571\u056b \u057e\u0565\u0580\u0561\u0562\u0565\u0580\u0574\u0578\u0582\u0576\u0584\u0568 <mask> \u0564\u0565\u057a\u056b \u057a\u0561\u057f\u057e\u0561\u057d\u057f\u0578\u0582\u0574 \u0567:",
+            "\u0534\u0580\u0561\u056f\u0561\u0576",
+            "\u0532\u0561\u0581\u0561\u057d\u0561\u056f\u0561\u0576"
+        ],
+        "Conspiracy": [
+            "\u054d\u0561 <mask> \u0567:",
+            "\u0553\u0561\u057d\u057f",
+            "\u054d\u057f\u0565\u056c"
+        ],
+        "Government Trust": [
+            "\u0544\u0565\u0576\u0584 \u0565\u0576\u0569\u0561\u0564\u0580\u0578\u0582\u0574 \u0565\u0576\u0584, \u0578\u0580 \u0561\u0576\u0571\u056b \u057e\u0565\u0580\u0561\u0562\u0565\u0580\u0574\u0578\u0582\u0576\u0584\u0568 <mask> \u0564\u0565\u057a\u056b \u056f\u0561\u057c\u0561\u057e\u0561\u0580\u0578\u0582\u0569\u0575\u0578\u0582\u0576 \u0567:",
+            "\u0534\u0580\u0561\u056f\u0561\u0576",
+            "\u0532\u0561\u0581\u0561\u057d\u0561\u056f\u0561\u0576"
+        ]
+    },
+    "dv": {
+        "Vacination": [],
+        "Conspiracy": [],
+        "Government Trust": []
+    }
+}

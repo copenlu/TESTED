@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:29e1d0a2e3fad890e925cdcf144d12118003a1907c746fd7faeeec42cba45dab
-size 291
+{
+    "en": {
+        "Stance": [" Answer: [MASK].", ["yes","absolutely", "definitely","yeah", "correct", "▁positively", "no", "never","▁shouldnt", "▁doesnt", "negative", "▁isnt", "▁dont"]]
+    },
+    "insertion_scheme": "<hypothesis>. Question: Topic about <premise>. correct?"
+}

@@ -1,3 +1,809 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:67fc40ac38191736656a4290e84db402537c95da649ae0ace38d73078fac697e
-size 25603
+{    "insertion_scheme": "<hypothesis>. The stance towards <premise> is ?",
+
+    "en": {
+        "Topics": [
+            "Vacination",
+            "Conspiracy",
+            "Government Trust"
+        ],
+        "Sentiments": [
+            "positive",
+            "negative",
+            "other"
+        ],
+        "Hypothesis": "The topic is about {}."
+    },
+    "it": {
+        "Topics": [
+            "Vcination",
+            "Cospirazione",
+            "Fiducia del governo"
+        ],
+        "Sentiments": [
+            "Positivo",
+            "Negativo",
+            "Altro"
+        ],
+        "Hypothesis": "L'argomento riguarda {}."
+    },
+    "es": {
+        "Topics": [
+            "Vcinaci\u00f3n",
+            "Conspiraci\u00f3n",
+            "Fideicomiso del Gobierno"
+        ],
+        "Sentiments": [
+            "Positivo",
+            "Negativo",
+            "Otro"
+        ],
+        "Hypothesis": "El tema trata sobre {}."
+    },
+    "de": {
+        "Topics": [
+            "Vcination.",
+            "Verschw\u00f6rung",
+            "Staatliches Vertrauen"
+        ],
+        "Sentiments": [
+            "positiv",
+            "Negativ",
+            "Sonstiges"
+        ],
+        "Hypothesis": "Das Thema ist ungef\u00e4hr {}."
+    },
+    "fr": {
+        "Topics": [
+            "Vcination",
+            "Conspiration",
+            "Fiducie gouvernementale"
+        ],
+        "Sentiments": [
+            "Positif",
+            "N\u00e9gatif",
+            "autre"
+        ],
+        "Hypothesis": "Le sujet concerne {}."
+    },
+    "ja": {
+        "Topics": [
+            "v v",
+            "\u9670\u8b00",
+            "\u653f\u5e9c\u4fe1\u8a17"
+        ],
+        "Sentiments": [
+            "\u30dd\u30b8\u30c6\u30a3\u30d6",
+            "\u30cd\u30ac\u30c6\u30a3\u30d6",
+            "\u4ed6\u306e"
+        ],
+        "Hypothesis": "\u30c8\u30d4\u30c3\u30af\u306f{}\u306b\u3064\u3044\u3066\u3067\u3059\u3002"
+    },
+    "pt": {
+        "Topics": [
+            "Vcination",
+            "Conspira\u00e7\u00e3o",
+            "Confian\u00e7a do Governo"
+        ],
+        "Sentiments": [
+            "Positivo",
+            "Negativo",
+            "outro"
+        ],
+        "Hypothesis": "O t\u00f3pico \u00e9 sobre {}."
+    },
+    "ca": {
+        "Topics": [
+            "Vicinaci\u00f3",
+            "Conspiraci\u00f3",
+            "Confian\u00e7a governamental"
+        ],
+        "Sentiments": [
+            "positiu",
+            "negatiu",
+            "altre"
+        ],
+        "Hypothesis": "El tema \u00e9s sobre {}."
+    },
+    "und": {
+        "Topics": [
+            null,
+            null,
+            null
+        ],
+        "Sentiments": [
+            null,
+            null,
+            null
+        ],
+        "Hypothesis": null
+    },
+    "ar": {
+        "Topics": [
+            "\u0627\u0644\u062a\u062e\u0645\u064a\u062f",
+            "\u0645\u0624\u0627\u0645\u0631\u0629",
+            "\u062a\u062b\u0642 \u0627\u0644\u062d\u0643\u0648\u0645\u0629"
+        ],
+        "Sentiments": [
+            "\u0625\u064a\u062c\u0627\u0628\u064a",
+            "\u0646\u0641\u064a",
+            "\u0622\u062e\u0631"
+        ],
+        "Hypothesis": "\u0627\u0644\u0645\u0648\u0636\u0648\u0639 \u0647\u0648 \u062d\u0648\u0644 {}."
+    },
+    "fa": {
+        "Topics": [
+            "\u0631\u0639\u06cc\u062a\u06cc",
+            "\u062a\u0648\u0637\u0626\u0647",
+            "\u0627\u0639\u062a\u0645\u0627\u062f \u062f\u0648\u0644\u062a"
+        ],
+        "Sentiments": [
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u06cc",
+            "\u062f\u06cc\u06af\u0631"
+        ],
+        "Hypothesis": "\u0645\u0648\u0636\u0648\u0639 \u062f\u0631\u0628\u0627\u0631\u0647 {} \u0627\u0633\u062a."
+    },
+    "th": {
+        "Topics": [
+            "\u0e01\u0e32\u0e23\u0e2b\u0e21\u0e38\u0e19\u0e40\u0e27\u0e35\u0e22\u0e19",
+            "\u0e01\u0e32\u0e23\u0e01\u0e1a\u0e0f",
+            "\u0e04\u0e27\u0e32\u0e21\u0e44\u0e27\u0e49\u0e27\u0e32\u0e07\u0e43\u0e08\u0e08\u0e32\u0e01\u0e23\u0e31\u0e10\u0e1a\u0e32\u0e25"
+        ],
+        "Sentiments": [
+            "\u0e40\u0e0a\u0e34\u0e07\u0e1a\u0e27\u0e01",
+            "\u0e40\u0e0a\u0e34\u0e07\u0e25\u0e1a",
+            "\u0e2d\u0e37\u0e48\u0e19 \u0e46"
+        ],
+        "Hypothesis": "\u0e2b\u0e31\u0e27\u0e02\u0e49\u0e2d\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e01\u0e31\u0e1a {}"
+    },
+    "ru": {
+        "Topics": [
+            "\u0412\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c",
+            "\u0417\u0430\u0433\u043e\u0432\u043e\u0440",
+            "\u041f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0434\u043e\u0432\u0435\u0440\u0438\u0435"
+        ],
+        "Sentiments": [
+            "\u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439",
+            "\u043e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439",
+            "\u0414\u0440\u0443\u0433\u0438\u0435"
+        ],
+        "Hypothesis": "\u0422\u0435\u043c\u0430 \u043e {}."
+    },
+    "tr": {
+        "Topics": [
+            "Vin\u00e7",
+            "Komplo",
+            "H\u00fck\u00fcmet g\u00fcven"
+        ],
+        "Sentiments": [
+            "pozitif",
+            "olumsuz",
+            "ba\u015fka"
+        ],
+        "Hypothesis": "Konu, yakla\u015f\u0131k {}."
+    },
+    "hi": {
+        "Topics": [
+            "\u0935\u093e\u0938\u093f\u0928\u0947\u0936\u0928",
+            "\u0937\u0921\u093c\u092f\u0902\u0924\u094d\u0930",
+            "\u0938\u0930\u0915\u093e\u0930\u0940 \u092d\u0930\u094b\u0938\u093e"
+        ],
+        "Sentiments": [
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0905\u0928\u094d\u092f"
+        ],
+        "Hypothesis": "\u0935\u093f\u0937\u092f {} \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0939\u0948\u0964"
+    },
+    "ht": {
+        "Topics": [
+            "Vlasyon",
+            "Konspirasyon",
+            "Gouv\u00e8nman konfyans"
+        ],
+        "Sentiments": [
+            "pozitif",
+            "negatif",
+            "l\u00f2t"
+        ],
+        "Hypothesis": "Sij\u00e8 a se sou {}."
+    },
+    "nl": {
+        "Topics": [
+            "Vcinatie",
+            "Complot",
+            "Overheidsvertrouwen"
+        ],
+        "Sentiments": [
+            "positief",
+            "negatief",
+            "ander"
+        ],
+        "Hypothesis": "Het onderwerp gaat over {}."
+    },
+    "in": {
+        "Topics": [
+            null,
+            null,
+            null
+        ],
+        "Sentiments": [
+            null,
+            null,
+            null
+        ],
+        "Hypothesis": null
+    },
+    "zh": {
+        "Topics": [
+            null,
+            null,
+            null
+        ],
+        "Sentiments": [
+            null,
+            null,
+            null
+        ],
+        "Hypothesis": null
+    },
+    "fi": {
+        "Topics": [
+            "Vcation",
+            "Salaliitto",
+            "Hallituksen luottamus"
+        ],
+        "Sentiments": [
+            "positiivinen",
+            "negatiivinen",
+            "muut"
+        ],
+        "Hypothesis": "Aihe on noin {}."
+    },
+    "lt": {
+        "Topics": [
+            "Vcingation.",
+            "S\u0105mokslas",
+            "Vyriausyb\u0117s pasitik\u0117jimas"
+        ],
+        "Sentiments": [
+            "teigiamas",
+            "Neigiamas",
+            "Kita"
+        ],
+        "Hypothesis": "\u0160i tema yra apie {}."
+    },
+    "no": {
+        "Topics": [
+            "Vcination",
+            "Sammensvergelse",
+            "Regjeringen tillit"
+        ],
+        "Sentiments": [
+            "positivt",
+            "negativ",
+            "annen"
+        ],
+        "Hypothesis": "Emnet handler om {}."
+    },
+    "tl": {
+        "Topics": [
+            "Vcination",
+            "Pagsasabwatan",
+            "Tiwala sa pamahalaan"
+        ],
+        "Sentiments": [
+            "positibo",
+            "negatibo",
+            "Other."
+        ],
+        "Hypothesis": "Ang paksa ay tungkol sa {}."
+    },
+    "ur": {
+        "Topics": [
+            "vcination.",
+            "\u0633\u0627\u0632\u0634",
+            "\u062d\u06a9\u0648\u0645\u062a \u0627\u0639\u062a\u0645\u0627\u062f"
+        ],
+        "Sentiments": [
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u06cc",
+            "\u062f\u0648\u0633\u0631\u0627"
+        ],
+        "Hypothesis": "\u0645\u0648\u0636\u0648\u0639 \u06a9\u06d2 \u0628\u0627\u0631\u06d2 \u0645\u06cc\u06ba \u06c1\u06d2 {}."
+    },
+    "et": {
+        "Topics": [
+            "Vcination",
+            "Vanden\u00f5u",
+            "Valitsuse usaldus"
+        ],
+        "Sentiments": [
+            "positiivne",
+            "negatiivne",
+            "teine"
+        ],
+        "Hypothesis": "Teema on umbes {}."
+    },
+    "da": {
+        "Topics": [
+            "Vcination",
+            "Sammensv\u00e6rgelse",
+            "Regering Trust"
+        ],
+        "Sentiments": [
+            "positiv",
+            "negativ",
+            "Andet"
+        ],
+        "Hypothesis": "Emnet handler om {}."
+    },
+    "sv": {
+        "Topics": [
+            "Vcination",
+            "Konspiration",
+            "Statsf\u00f6rlust"
+        ],
+        "Sentiments": [
+            "positiv",
+            "negativ",
+            "\u00d6vrig"
+        ],
+        "Hypothesis": "\u00c4mnet handlar om {}."
+    },
+    "ro": {
+        "Topics": [
+            "Vcinare",
+            "Conspira\u0163ie",
+            "\u00cencrederea guvernamental\u0103"
+        ],
+        "Sentiments": [
+            "pozitiv",
+            "negativ",
+            "alte"
+        ],
+        "Hypothesis": "Subiectul este de aproximativ {}."
+    },
+    "ko": {
+        "Topics": [
+            "\ucc99\uc8c4",
+            "\uc74c\ubaa8",
+            "\uc815\ubd80\uc758 \uc2e0\ub8b0"
+        ],
+        "Sentiments": [
+            "\uae0d\uc815\uc801 \uc778",
+            "\ubd80\uc815\uc801\uc778",
+            "\ub2e4\ub978"
+        ],
+        "Hypothesis": "\uc8fc\uc81c\ub294 {}\uc5d0 \ub300\ud55c \uc815\ubcf4\uc785\ub2c8\ub2e4."
+    },
+    "cs": {
+        "Topics": [
+            "Vcination.",
+            "Spiknut\u00ed",
+            "Vl\u00e1dn\u00ed v\u011b\u0159"
+        ],
+        "Sentiments": [
+            "pozitivn\u00ed",
+            "z\u00e1porn\u00fd",
+            "jin\u00fd"
+        ],
+        "Hypothesis": "T\u00e9ma je o {}."
+    },
+    "pl": {
+        "Topics": [
+            "Vchinacja",
+            "Spisek",
+            "Zaufanie rz\u0105du"
+        ],
+        "Sentiments": [
+            "pozytywny",
+            "negatywny",
+            "inny"
+        ],
+        "Hypothesis": "Temat dotyczy {}."
+    },
+    "eu": {
+        "Topics": [
+            "Terrenazio",
+            "Azpilan",
+            "Gobernuaren konfiantza"
+        ],
+        "Sentiments": [
+            "baiezko",
+            "ezezko",
+            "beste"
+        ],
+        "Hypothesis": "Gaia {} buruzkoa da."
+    },
+    "iw": {
+        "Topics": [
+            "Vcination.",
+            "\u05e7\u05b6\u05e9\u05c1\u05b6\u05e8",
+            "\u05d0\u05de\u05d5\u05df \u05de\u05de\u05e9\u05dc\u05ea\u05d9"
+        ],
+        "Sentiments": [
+            "\u05d7\u05b4\u05d9\u05d5\u05bc\u05d1\u05b4\u05d9",
+            "\u05e9\u05dc\u05d9\u05dc\u05d9",
+            "\u05d0\u05b7\u05d7\u05b5\u05e8"
+        ],
+        "Hypothesis": "\u05d4\u05e0\u05d5\u05e9\u05d0 \u05d4\u05d5\u05d0 \u05e2\u05dc {}."
+    },
+    "uk": {
+        "Topics": [
+            "\u0420\u043e\u0437\u0432\u0430\u0433",
+            "\u0417\u043c\u0430\u0433\u0430\u043d\u043d\u044f",
+            "\u0414\u043e\u0432\u0456\u0440\u0430 \u0443\u0440\u044f\u0434\u0443"
+        ],
+        "Sentiments": [
+            "\u043f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0438\u0439",
+            "\u043d\u0435\u0433\u0430\u0442\u0438\u0432\u043d\u0438\u0439",
+            "\u0456\u043d\u0448\u0438\u0439"
+        ],
+        "Hypothesis": "\u0422\u0435\u043c\u0430 \u043f\u0440\u043e {}."
+    },
+    "hu": {
+        "Topics": [
+            "Vikin\u00e1ci\u00f3",
+            "\u00d6sszeesk\u00fcv\u00e9s",
+            "Korm\u00e1nyzati bizalom"
+        ],
+        "Sentiments": [
+            "pozit\u00edv",
+            "negat\u00edv",
+            "Egy\u00e9b"
+        ],
+        "Hypothesis": "A t\u00e9ma a {}."
+    },
+    "cy": {
+        "Topics": [
+            "Chychod",
+            "Gynllwyn",
+            "Ymddiriedolaeth y Llywodraeth"
+        ],
+        "Sentiments": [
+            "cadarnhaol",
+            "negyddol",
+            "arall"
+        ],
+        "Hypothesis": "Mae'r pwnc yn ymwneud {}."
+    },
+    "lv": {
+        "Topics": [
+            "Vikin\u0101cija",
+            "Sazv\u0113rest\u012bba",
+            "Vald\u012bbas uztic\u012bba"
+        ],
+        "Sentiments": [
+            "pozit\u012bvs",
+            "negat\u012bvs",
+            "citi"
+        ],
+        "Hypothesis": "T\u0113ma ir aptuveni {}."
+    },
+    "el": {
+        "Topics": [
+            "\u03a3\u03ba\u03ac\u03c6\u03bf\u03c2",
+            "\u03a3\u03c5\u03bd\u03c9\u03bc\u03bf\u03c3\u03af\u03b1",
+            "\u039a\u03c5\u03b2\u03b5\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03ae \u03b5\u03bc\u03c0\u03b9\u03c3\u03c4\u03bf\u03c3\u03cd\u03bd\u03b7"
+        ],
+        "Sentiments": [
+            "\u03b8\u03b5\u03c4\u03b9\u03ba\u03cc\u03c2",
+            "\u03b1\u03c1\u03bd\u03b7\u03c4\u03b9\u03ba\u03cc\u03c2",
+            "\u03ac\u03bb\u03bb\u03b1"
+        ],
+        "Hypothesis": "\u03a4\u03bf \u03b8\u03ad\u03bc\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c0\u03b5\u03c1\u03af\u03c0\u03bf\u03c5 {}."
+    },
+    "vi": {
+        "Topics": [
+            "Vcination.",
+            "\u00c2m m\u01b0u.",
+            "Ch\u00ednh ph\u1ee7 tin t\u01b0\u1edfng"
+        ],
+        "Sentiments": [
+            "kh\u1ea3 quan",
+            "ph\u1ee7 \u0111\u1ecbnh",
+            "kh\u00e1c"
+        ],
+        "Hypothesis": "Ch\u1ee7 \u0111\u1ec1 l\u00e0 kho\u1ea3ng {}."
+    },
+    "sl": {
+        "Topics": [
+            "Zdravilo",
+            "Zarota",
+            "Vladno zaupanje"
+        ],
+        "Sentiments": [
+            "Pozitivno",
+            "negativno",
+            "drugo"
+        ],
+        "Hypothesis": "Tema je pribli\u017eno}}."
+    },
+    "ne": {
+        "Topics": [
+            "\u0935\u093f\u0937\u093e\u0932\u0941",
+            "\u0937\u0921\u094d\u092f\u0924\u094d\u0930",
+            "\u0938\u0930\u0915\u093e\u0930\u0915\u094b \u0935\u093f\u0936\u094d\u0935\u093e\u0938"
+        ],
+        "Sentiments": [
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0905\u0930\u0941"
+        ],
+        "Hypothesis": "\u0935\u093f\u0937\u092f \u0915\u094b \u092c\u093e\u0930\u0947 \u092e\u093e}} \u091b\u0964"
+    },
+    "am": {
+        "Topics": [
+            "Vition",
+            "\u1234\u122b",
+            "\u12e8\u1218\u1295\u130d\u1235\u1275 \u12a5\u121d\u1290\u1275"
+        ],
+        "Sentiments": [
+            "\u12a0\u12ce\u1295\u1273\u12ca",
+            "\u12a0\u1209\u1273\u12ca",
+            "\u120c\u120b"
+        ],
+        "Hypothesis": "\u122d\u12d5\u1231 {} \u1290\u12cd."
+    },
+    "is": {
+        "Topics": [
+            "VCination.",
+            "Sams\u00e6ri",
+            "R\u00edkisstj\u00f3rnin traust"
+        ],
+        "Sentiments": [
+            "j\u00e1kv\u00e6tt",
+            "neikv\u00e6\u00f0",
+            "anna\u00f0"
+        ],
+        "Hypothesis": "Efni\u00f0 er um {}."
+    },
+    "te": {
+        "Topics": [
+            "Vcination.",
+            "\u0c15\u0c41\u0c1f\u0c4d\u0c30",
+            "\u0c2a\u0c4d\u0c30\u0c2d\u0c41\u0c24\u0c4d\u0c35 \u0c1f\u0c4d\u0c30\u0c38\u0c4d\u0c1f\u0c4d"
+        ],
+        "Sentiments": [
+            "\u0c05\u0c28\u0c41\u0c15\u0c42\u0c32",
+            "\u0c2a\u0c4d\u0c30\u0c24\u0c3f\u0c15\u0c42\u0c32\u0c02\u0c17\u0c3e",
+            "\u0c07\u0c24\u0c30"
+        ],
+        "Hypothesis": "\u0c35\u0c3f\u0c37\u0c2f\u0c02 {}."
+    },
+    "ta": {
+        "Topics": [
+            "Vacination.",
+            "\u0b9a\u0ba4\u0bbf",
+            "\u0b85\u0bb0\u0b9a\u0bbe\u0b99\u0bcd\u0b95 \u0ba8\u0bae\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bc8"
+        ],
+        "Sentiments": [
+            "\u0ba8\u0bc7\u0bb0\u0bcd\u0bae\u0bb1\u0bc8",
+            "\u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0bae\u0bb1\u0bc8",
+            "\u0bae\u0bb1\u0bcd\u0bb1\u0bb5\u0bc8"
+        ],
+        "Hypothesis": "\u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bb1\u0bcd\u0bb1\u0bbf {}."
+    },
+    "si": {
+        "Topics": [
+            "Vcindance",
+            "\u0d9a\u0dd4\u0db8\u0db1\u0dca\u0dad\u0dca\u0dbb\u0dab\u0dba",
+            "\u0dbb\u0da2\u0dba\u0dda \u0dc0\u0dd2\u0dc1\u0dca\u0dc0\u0dcf\u0dc3\u0dba"
+        ],
+        "Sentiments": [
+            "\u0db0\u0db1\u0dcf\u0dad\u0dca\u0db8\u0d9a",
+            "\u0dc3\u0dd8\u0dab",
+            "\u0d85\u0db1\u0dd2\u0d9a\u0dca"
+        ],
+        "Hypothesis": "\u0db8\u0dcf\u0dad\u0dd8\u0d9a\u0dcf\u0dc0 {} \u0db4\u0db8\u0dab \u0dc0\u0dda."
+    },
+    "sr": {
+        "Topics": [
+            "\u0412\u0446\u0438\u043d\u0430\u0446\u0438\u0458\u0430",
+            "\u0417\u0430\u0432\u0435\u0440\u0430",
+            "\u0412\u043b\u0430\u0434\u0438\u043d\u043e \u043f\u043e\u0432\u0435\u0440\u0435\u045a\u0435"
+        ],
+        "Sentiments": [
+            "\u043f\u043e\u0437\u0438\u0442\u0438\u0432\u0430\u043d",
+            "\u043d\u0435\u0433\u0430\u0442\u0438\u0432\u0430\u043d",
+            "\u0434\u0440\u0443\u0433\u0438"
+        ],
+        "Hypothesis": "\u0422\u0435\u043c\u0430 \u0441\u0435 \u0433\u043e\u0432\u043e\u0440\u0438 \u043e {}."
+    },
+    "mr": {
+        "Topics": [
+            "Vcination",
+            "\u0937\u0921\u094d\u092f\u0902\u0924\u094d\u0930",
+            "\u0938\u0930\u0915\u093e\u0930\u0940 \u0935\u093f\u0936\u094d\u0935\u093e\u0938"
+        ],
+        "Sentiments": [
+            "\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+            "\u0907\u0924\u0930"
+        ],
+        "Hypothesis": "\u0935\u093f\u0937\u092f [} \u092c\u0926\u094d\u0926\u0932 \u0906\u0939\u0947."
+    },
+    "bg": {
+        "Topics": [
+            "Vcination.",
+            "\u041a\u043e\u043d\u0441\u043f\u0438\u0440\u0430\u0446\u0438\u044f",
+            "\u0414\u044a\u0440\u0436\u0430\u0432\u043d\u043e \u0434\u043e\u0432\u0435\u0440\u0438\u0435"
+        ],
+        "Sentiments": [
+            "\u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u0435\u043d",
+            "\u043e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u0435\u043d",
+            "\u0414\u0420\u0423\u0413\u0418"
+        ],
+        "Hypothesis": "\u0422\u0435\u043c\u0430\u0442\u0430 \u0435 \u043e\u043a\u043e\u043b\u043e {}."
+    },
+    "ml": {
+        "Topics": [
+            "\u0d35\u0d48\u0d17\u0d24\u0d02",
+            "\u0d09\u0d2a\u0d1c\u0d3e\u0d2a\u0d02",
+            "\u0d38\u0d7c\u0d15\u0d4d\u0d15\u0d3e\u0d7c \u0d35\u0d3f\u0d36\u0d4d\u0d35\u0d3e\u0d38\u0d02"
+        ],
+        "Sentiments": [
+            "\u0d28\u0d3f\u0d36\u0d4d\u0d1a\u0d3f\u0d24\u0d2e\u0d3e\u0d2f",
+            "\u0d28\u0d3f\u0d37\u0d47\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28",
+            "\u0d2e\u0d31\u0d4d\u0d31\u0d47\u0d24\u0d3e\u0d2f"
+        ],
+        "Hypothesis": "\u0d35\u0d3f\u0d37\u0d2f\u0d02 {}."
+    },
+    "kn": {
+        "Topics": [
+            "\u0cb5\u0cbf\u0ca8\u0cc0\u0ca4",
+            "\u0caa\u0cbf\u0ca4\u0cc2\u0cb0\u0cbf",
+            "\u0cb8\u0cb0\u0ccd\u0c95\u0cbe\u0cb0 \u0ca8\u0c82\u0cac\u0cbf\u0c95\u0cc6"
+        ],
+        "Sentiments": [
+            "\u0cb8\u0c95\u0cbe\u0cb0\u0cbe\u0ca4\u0ccd\u0cae\u0c95",
+            "\u0c8b\u0ca3\u0cbe\u0ca4\u0ccd\u0cae\u0c95",
+            "\u0c87\u0ca4\u0cb0\u0cc6"
+        ],
+        "Hypothesis": "\u0cb5\u0cbf\u0cb7\u0caf\u0cb5\u0cc1 {} \u0cac\u0c97\u0ccd\u0c97\u0cc6."
+    },
+    "gu": {
+        "Topics": [
+            "\u0ab5\u0ab6\u0ac0\u0a95\u0ab0\u0aa3",
+            "\u0ab7\u0aa1\u0aaf\u0a82\u0aa4\u0acd\u0ab0",
+            "\u0ab8\u0ab0\u0a95\u0abe\u0ab0\u0ac0 \u0a9f\u0acd\u0ab0\u0ab8\u0acd\u0a9f"
+        ],
+        "Sentiments": [
+            "\u0ab9\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95",
+            "\u0aa8\u0a95\u0abe\u0ab0\u0abe\u0aa4\u0acd\u0aae\u0a95",
+            "\u0a85\u0aa8\u0acd\u0aaf"
+        ],
+        "Hypothesis": "\u0a86 \u0aae\u0ac1\u0aa6\u0acd\u0aa6\u0acb {} \u0a9b\u0ac7."
+    },
+    "or": {
+        "Topics": [
+            "\u0b2d\u0b4b\u0b15\u0b38\u0b28\u0b4d",
+            "\u0b37\u0b21\u0b2f\u0b28\u0b4d\u0b24\u0b4d\u0b30",
+            "\u0b38\u0b30\u0b15\u0b3e\u0b30\u0b40 \u0b2c\u0b3f\u0b36\u0b4d\u0b71\u0b3e\u0b38"
+        ],
+        "Sentiments": [
+            "\u0b38\u0b15\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15 |",
+            "\u0b28\u0b15\u0b3e\u0b30\u0b3e\u0b24\u0b4d\u0b2e\u0b15",
+            "\u0b05\u0b28\u0b4d\u0b5f"
+        ],
+        "Hypothesis": "\u0b2c\u0b3f\u0b37\u0b5f\u0b1f\u0b3f {} \u0b2c\u0b3f\u0b37\u0b5f\u0b30\u0b47 |"
+    },
+    "ps": {
+        "Topics": [
+            "\u062f",
+            "\u0633\u0627\u0632\u0634",
+            "\u062f \u062d\u06a9\u0648\u0645\u062a \u0628\u0627\u0648\u0631"
+        ],
+        "Sentiments": [
+            "\u0645\u062b\u0628\u062a",
+            "\u0645\u0646\u0641\u064a",
+            "\u0646\u0648\u0631"
+        ],
+        "Hypothesis": "\u0645\u0648\u0636\u0648\u0639 \u067e\u0647 \u0627\u0693\u0647 \u062f\u0647 {}."
+    },
+    "bn": {
+        "Topics": [
+            "Vcination.",
+            "\u09b7\u09a1\u09bc\u09af\u09a8\u09cd\u09a4\u09cd\u09b0",
+            "\u09b8\u09b0\u0995\u09be\u09b0\u09bf \u09ac\u09bf\u09b6\u09cd\u09ac\u09be\u09b8"
+        ],
+        "Sentiments": [
+            "\u0987\u09a4\u09bf\u09ac\u09be\u099a\u0995",
+            "\u09a8\u09c7\u09a4\u09bf\u09ac\u09be\u099a\u0995",
+            "\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af"
+        ],
+        "Hypothesis": "\u09ac\u09bf\u09b7\u09af\u09bc {} \u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995\u09c7\u0964"
+    },
+    "pa": {
+        "Topics": [
+            "\u0a2a\u0a3e\u0a1a\u0a15",
+            "\u0a38\u0a3e\u0a1c\u0a3c\u0a3f\u0a38\u0a3c",
+            "\u0a38\u0a30\u0a15\u0a3e\u0a30\u0a40 \u0a2d\u0a30\u0a4b\u0a38\u0a3e"
+        ],
+        "Sentiments": [
+            "\u0a38\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15",
+            "\u0a28\u0a15\u0a3e\u0a30\u0a3e\u0a24\u0a2e\u0a15",
+            "\u0a39\u0a4b\u0a30"
+        ],
+        "Hypothesis": "\u0a35\u0a3f\u0a38\u0a3c\u0a3e \u0a32\u0a17\u0a2d\u0a17 {} \u0a39\u0a48."
+    },
+    "my": {
+        "Topics": [
+            "vcination",
+            "\u1021\u1000\u103c\u1036",
+            "\u1021\u1005\u102d\u102f\u1038\u101b\u101a\u102f\u1036\u1000\u103c\u100a\u103a\u1019\u103e\u102f"
+        ],
+        "Sentiments": [
+            "\u1019\u102f\u1001\u103b\u1016\u103c\u1005\u103a\u101e\u1031\u102c",
+            "\u101c\u102f\u1036\u1038\u101d\u103c\u1004\u1004\u103a\u1038\u1006\u102d\u102f\u101e\u1031\u102c",
+            "\u1021\u1001\u103c\u102c\u1038"
+        ],
+        "Hypothesis": "\u1001\u1031\u102b\u1004\u103a\u1038\u1005\u1009\u103a {} \u1021\u1000\u103c\u1031\u102c\u1004\u103a\u1038\u1000\u102d\u102f\u1016\u103c\u1005\u103a\u1015\u102b\u1010\u101a\u103a\u104b"
+    },
+    "ka": {
+        "Topics": [
+            "\u10d8\u10de\u10e0\u10dd\u10d1\u10d0",
+            "\u10e8\u10d4\u10d7\u10e5\u10db\u10e3\u10da\u10d4\u10d1\u10d0",
+            "\u10db\u10d7\u10d0\u10d5\u10e0\u10dd\u10d1\u10d8\u10e1 \u10dc\u10d3\u10dd\u10d1\u10d0"
+        ],
+        "Sentiments": [
+            "\u10d3\u10d0\u10d3\u10d4\u10d1\u10d8\u10d7\u10d8",
+            "\u10e3\u10d0\u10e0\u10e7\u10dd\u10e4\u10d8\u10d7\u10d8",
+            "\u10e1\u10ee\u10d5\u10d0"
+        ],
+        "Hypothesis": "\u10d7\u10d4\u10db\u10d0 \u10d0\u10e0\u10d8\u10e1 {}."
+    },
+    "sd": {
+        "Topics": [
+            "\u0639\u0648\u0631\u062a\u0646 \u062c\u0648",
+            "\u0633\u0627\u0632\u0634",
+            "\u0633\u0631\u06aa\u0627\u0631\u064a \u067d\u0631\u0633\u067d"
+        ],
+        "Sentiments": [
+            "\u0645\u062b\u0628\u062a \u0648\u068c\u0648",
+            "\u0646\u0627\u06aa\u0627\u0631\u064a",
+            "\u067b\u064a\u0648"
+        ],
+        "Hypothesis": "\u0645\u0648\u0636\u0648\u0639 {} \u0628\u0627\u0628\u062a \u0622\u0647\u064a."
+    },
+    "ckb": {
+        "Topics": [
+            null,
+            null,
+            null
+        ],
+        "Sentiments": [
+            null,
+            null,
+            null
+        ],
+        "Hypothesis": null
+    },
+    "hy": {
+        "Topics": [
+            "\u054e\u0573\u0561\u057f\u0578\u0582\u0574",
+            "\u0534\u0561\u057e\u0561\u0564\u0580\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
+            "\u053f\u0561\u057c\u0561\u057e\u0561\u0580\u0578\u0582\u0569\u0575\u0561\u0576 \u057e\u057d\u057f\u0561\u0570\u0578\u0582\u0569\u0575\u0578\u0582\u0576"
+        ],
+        "Sentiments": [
+            "\u0564\u0580\u0561\u056f\u0561\u0576",
+            "\u0562\u0561\u0581\u0561\u057d\u0561\u056f\u0561\u0576",
+            "\u0561\u0575\u056c"
+        ],
+        "Hypothesis": "\u0539\u0565\u0574\u0561\u0576 \u057e\u0565\u0580\u0561\u0562\u0565\u0580\u0578\u0582\u0574 \u0567."
+    },
+    "dv": {
+        "Topics": [
+            null,
+            null,
+            null
+        ],
+        "Sentiments": [
+            null,
+            null,
+            null
+        ],
+        "Hypothesis": null
+    }
+}

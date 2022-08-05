@@ -1,0 +1,19 @@
+{
+    "0": "trust_in_national_health_authorities",
+    "1": "trust_in_scientists",
+    "2": "trust_in_government",
+    "3": "democratic_rights",
+    "4": "support_of_public_protests",
+    "5": "conspiracy_beliefs",
+    "6": "misinformation",
+    "7": "fatigue",
+    "8": "behaviour_change",
+    "9": "knowledge",
+    "10": "concern_family",
+    "11": "concern_hospitals",
+    "12": "concern_society",
+    "13": "concern_unrest_crime",
+    "14": "concern_economy",
+    "15": "support_restrictions",
+    "16": "vaccine_hesitancy"
+}

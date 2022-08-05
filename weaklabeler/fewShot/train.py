@@ -1,3 +1,4 @@
+from random import shuffle
 import torch
 from torch.utils.data import DataLoader
 
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
     '--valid_path',type=str,default=None,
-    help="The path to the training data"
+    help="The path to the validation data"
     )
 
     parser.add_argument(
@@ -219,7 +220,7 @@ if __name__ == "__main__":
         raise ValueError("The number of examples to consider per few_shot experiment is larger than the number of examples in the dataset.")
 
     train_x, val_x, train_y, val_y = train_test_split(data[args.text_col],data[args.target_col] , \
-                                    test_size=ratio, stratify = data[args.target_col])
+                                    test_size=ratio, stratify = data[args.target_col], shuffle=True)
 
     if args.valid_path is not None:
         valid_data = pd.read_csv(args.valid_path)

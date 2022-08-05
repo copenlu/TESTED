@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8473f610abf61ae4f30634e3b0bf72f1a0c604ca3f051b447590a77516f6e850
-size 566
+{
+    "0": "trust_in_national_health_authorities",
+    "1": "trust_in_scientists",
+    "2": "trust_in_government",
+    "3": "democratic_rights",
+    "4": "support_of_public_protests",
+    "5": "conspiracy_beliefs",
+    "6": "misinformation",
+    "7": "political_ideology",
+    "8": "vote_choice_government",
+    "9": "fatigue",
+    "10": "behaviour_change",
+    "11": "knowledge",
+    "12": "concern_family",
+    "13": "concern_hospitals",
+    "14": "concern_society",
+    "15": "concern_unrest_crime",
+    "16": "concern_economy",
+    "17": "support_restrictions",
+    "18": "vaccine_hesitancy"
+}

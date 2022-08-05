@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d0fbc9034243cf2fda1e33704a3d2172afdeb44edc3f819943aa637809f72de9
-size 208
+{
+    "en": {
+        "Topics": ["supporting", "opposing"],
+        "Sentiments": ["positive", "negative", "neutral"],
+        "Hypothesis":"{}."
+    },
+    "insertion_scheme": "<premise> ? <hypothesis>. "
+}
