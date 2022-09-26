@@ -1,3 +1,4 @@
+from itertools import count
 from random import sample
 import torch
 from torch import nn
@@ -19,6 +20,7 @@ from weaklabeler.tools.utils import get_targets, get_available_cpus
 from torch.utils.data import DataLoader
 
 from typing import List
+import os
 
 
 def batcher(iterable, n=1):
@@ -43,18 +45,18 @@ def predict(texts:List , model:nn.Module, target_dict: Dict = {}, tokenizer: Aut
     predictions = []
 
     dataset = FewShotData(data = texts, labels = None, tokenizer = tokenizer, target_dict=target_dict )
-    print(target_dict)
+    # print(target_dict)
 
 
     label_count = len(target_dict)
     
     available_workers = get_available_cpus()
-    dataloader = DataLoader(dataset, batch_size = 8, shuffle=False, num_workers = available_workers)
+    dataloader = DataLoader(dataset, batch_size = 128, shuffle=False, num_workers = available_workers)
 
     model.eval()
     with torch.inference_mode():
 
-        for batch in tqdm(dataloader):
+        for batch in dataloader:
 
             batch_input = {k: v.to('cuda') for k, v in batch.items()}
             # batch_labels = batch_input['labels'].view(-1)
@@ -132,11 +134,21 @@ if __name__ == '__main__':
     model.to("cuda")
 
     tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True)
-    test = pd.read_csv(args.test_path, index_col=0)
+    test = pd.read_csv(args.test_path, index_col=0, chunksize=128)
     target_dict = get_targets(args.target_config_path)
 
 
     print("Predicting...\n")
-    test[args.save_col] = predict(test[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
+    # for chunk in test:
+    #     chunk[args.save_col] = predict(test[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
 
-    test.to_csv('results.csv')
+    header = True
+    for chunk in tqdm(test):
+
+        chunk[args.save_col] = predict(chunk[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
+        chunk.to_csv( 'results.csv', header=header, mode='a')
+
+
+        header = False
+
+    # test.to_csv('results.csv')
