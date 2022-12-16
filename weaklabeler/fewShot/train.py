@@ -23,7 +23,8 @@ import torch.optim as optim
 
 import aim
 from aim import Run
-from weaklabeler.fewShot.data import FewShotData
+from weaklabeler.fewShot.data import FewShotData, contrastive_collate_fn
+from weaklabeler.fewShot.trainers import train_mlp, get_optimizer
 from weaklabeler.tools.utils import get_targets, get_available_cpus
 from weaklabeler.fewShot.eval import evaluate
 from tqdm import tqdm
@@ -35,104 +36,6 @@ from transformers import get_linear_schedule_with_warmup
 
 import pandas as pd
 import os
-
-def train(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader, \
-    val_dataloader: DataLoader=None, epochs=10, patience:int = 2, val_step: int = 2, aim_run: Run = None) -> Union[Transformer_classifier, optim.AdamW]:
-    """
-    
-
-    Args:
-        model (nn.Module): The Transformer classifier
-        optimizer (optim.AdamW): The optimiser for training
-        train_loader (DataLoader): training loader
-        epochs (int, optional): The amount of epochs to train. Defaults to 10.
-        patience (int, optional): the patience for Early Stopping. Defaults to 2.
-        val_step (int, optional): the validation rate.
-        aim_run (Run, optional): Aim run for tracking. Defaults to None.
-
-    Returns:
-        Union[Transformer_classifier, optim.AdamW]: Model and the Optimizer
-    """    
-    
-
-    loss_fn = nn.CrossEntropyLoss()
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    best_accuracy = 0
-    the_last_loss = 100
-    trigger_times = 0
-
-    train_steps_all = epochs * len(train_dataloader)
-    schedule = get_linear_schedule_with_warmup( optimizer = optimizer, num_warmup_steps = int(train_steps_all/10), num_training_steps = train_steps_all)
-
-    for epoch_i in range(epochs):
-
-        # Tracking time and loss
-        t0_epoch = time.time()
-        total_loss = 0
-
-        model.train()
-        # progress_bar = tqdm(range(train_steps_all))
-
-        for step, batch in tqdm(enumerate(train_dataloader)):
-
-            batch_input = {k: v.to(device) for k, v in batch.items()}
-            batch_labels = batch_input['labels'].view(-1)
-
-            logits = model(**batch_input)
-
-            loss = loss_fn(logits, batch_labels)
-
-            aim_run.track(loss.item() , name = "Batch_Loss", context = {'type':'train'}, step=step)
-
-            total_loss += loss.item()
-
-            loss.backward()
-            # nn.utils.clip_grad_norm_(model.parameters(), max_norm=2.0, norm_type=2)
-
-            optimizer.step()
-            schedule.step()
-
-            optimizer.zero_grad()
-            # progress_bar.update(1)
-
-        avg_train_loss = total_loss / len(train_dataloader)
-        aim_run.track(avg_train_loss , name = "Loss", context = {'type':'train'}, epoch=epoch_i)
-
-        if val_dataloader is not None and (epoch_i+1)%val_step == 0:
-            print("Validation")
-
-            val_loss, val_accuracy, _, _ = evaluate(model, val_dataloader)
-            
-            if val_accuracy > best_accuracy:
-                best_accuracy = val_accuracy
-
-            time_elapsed = time.time() - t0_epoch
-
-            results_val_str = f"{epoch_i + 1:^7} | {avg_train_loss:^12.6f} | {val_loss:^10.6f} | {val_accuracy:^9.2f} | {time_elapsed:^9.2f}"
-            print(results_val_str)
-
-            aim_run.track(aim.Text(results_val_str+ "\n"), name = 'log_out')
-
-            aim_run.track(val_loss , name = "Loss", context = {'type':'val'}, epoch=epoch_i)
-            aim_run.track(val_accuracy , name = "Metric", context = {'type':'val'},epoch=epoch_i)
-
-
-            if abs(val_loss - the_last_loss) < 1e-5 or val_loss > the_last_loss:
-                trigger_times += 1
-                print('trigger times:', trigger_times)
-
-                if trigger_times >= patience:
-                    print('Early stopping!\nStart to test process.')
-                    return model, optimizer
-            
-            the_last_loss = val_loss
-
-          
-    print("\n")
-    print(f"Training complete! Best accuracy: {best_accuracy:.2f}%.")
-    return model, optimizer
-
 
 
 if __name__ == "__main__":
@@ -202,9 +105,9 @@ if __name__ == "__main__":
 
     parser.add_argument('--num_labels', type=int, default=None, help="Number of labels")
     parser.add_argument('--linear_probe', action='store_true', help="Use linear probing", default=False)
+    parser.add_argument('--contrastive', action='store_true', help="Contrastive training", default=False)
 
     args = parser.parse_args()
-
 
 
     aim_run = Run(repo='.', experiment=args.experiment_name, run_hash=None)
@@ -226,10 +129,10 @@ if __name__ == "__main__":
         valid_data = pd.read_csv(args.valid_path)
         val_x, val_y = valid_data[args.text_col], valid_data[args.target_col]
 
+    print("Training data size: ", len(train_x))
+    print("Validation data size: ", len(val_x))
 
-    print(len(train_x), len(val_x))
-
-    tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor,model_max_length=512, use_fast=True)
 
     target_dict = get_targets(args.target_config_path)
 
@@ -240,8 +143,10 @@ if __name__ == "__main__":
 
 
     available_workers = get_available_cpus()
-    train_dataloader = DataLoader(train_dataset, batch_size = args.batch_size, shuffle=True, num_workers = available_workers)
-    val_dataloader = DataLoader(val_dataset, batch_size = args.batch_size, shuffle=True, num_workers = available_workers)
+    train_dataloader = DataLoader(train_dataset, batch_size = args.batch_size, shuffle=True,\
+         num_workers = available_workers, collate_fn=contrastive_collate_fn if args.contrastive else None)
+    val_dataloader = DataLoader(val_dataset, batch_size = args.batch_size, shuffle=True,\
+         num_workers = available_workers, collate_fn=contrastive_collate_fn if args.contrastive else None)
 
 
     model = Transformer_classifier(feat_extractor_name = args.feat_extractor, num_labels = args.num_labels, linear_probe = args.linear_probe)
@@ -250,9 +155,10 @@ if __name__ == "__main__":
     print(device)
     model.to(device)
 
-    optimizer = optim.AdamW(model.parameters(),lr=args.learning_rate)
+    optimizer = get_optimizer(model, args.learning_rate)
+    # optimizer = optim.AdamW(model.parameters(),lr=args.learning_rate)
 
-    model, optimizer = train(model = model, optimizer=optimizer, train_dataloader=train_dataloader, val_dataloader=val_dataloader,\
+    model, optimizer = train_mlp(model = model, optimizer=optimizer, train_dataloader=train_dataloader, val_dataloader=val_dataloader,\
          epochs=args.epochs,  val_step=args.val_step, aim_run=aim_run)
 
     print("Training Complete\n")
@@ -270,3 +176,10 @@ if __name__ == "__main__":
 
 
 
+
+"""
+python weaklabeler/fewShot/train.py --experiment_name fewShot_epochs=5_n=128 --feat_extractor roberta-base \
+--training_path weaklabeler/Data/few_shot_diverse_sample.csv --model_save_path weaklabeler/models/ \
+--num_labels 4 --batch_size 16 --epochs 5 --learning_rate 0.0001 --shot_num 512 --val_step 3 \
+--text_col sentence --target_col label_name --target_config_path weaklabeler/configs/few_shot_diverse_sample.json 
+"""

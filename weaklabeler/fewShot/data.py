@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import pandas as pd
+import torch
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
@@ -15,6 +15,31 @@ sys.path.append('../tools')
 
 
 from weaklabeler.tools.transformer_tok import transformer_tok
+
+
+def contrastive_collate_fn(batch):
+    
+    input_ids = torch.stack([i['input_ids'].clone().detach() for i in batch])
+    attention_mask = torch.stack([i['attention_mask'].clone().detach() for i in batch])
+    labels = torch.stack([torch.tensor(i['labels']).clone().detach() for i in batch])
+
+    contrastive_examples = {}
+
+    for index, label in enumerate(labels):
+        for index2, label2 in enumerate(labels):
+            if index not in contrastive_examples:
+                    contrastive_examples[index] = []
+
+            if index == index2:
+                continue
+
+            if label != label2:
+                contrastive_examples[index].append((index2, torch.tensor([-1]).to(labels.device)))
+            else:
+                contrastive_examples[index].append((index2, torch.tensor([1]).to(labels.device)))
+
+    
+    return {'input_ids': input_ids, 'attention_mask': attention_mask, 'labels': labels, 'contrastive_pairs': contrastive_examples}
 
 class FewShotData(Dataset):
     def __init__(self, data: pd.DataFrame = None, labels: pd.DataFrame = None, \

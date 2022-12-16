@@ -23,15 +23,22 @@ def evaluate(model:nn.Module, val_dataloader: DataLoader) -> Union[Tensor, Tenso
         model.eval()
 
         for batch in tqdm(val_dataloader):
-            batch_input = {k: v.to(device) for k, v in batch.items()}
-            batch_labels = batch_input['labels']
+
+            batch_input = {k: v.to(device) for k, v in batch.items() if k != 'contrastive_pairs'}
+
+            if 'contrastive_pairs' in batch:
+                batch_input['contrastive_pairs'] = batch['contrastive_pairs']
+            batch_labels = batch_input['labels'].view(-1)
+
             model.zero_grad()
 
 
             with torch.no_grad():
-                logits = model(**batch_input)
+                logits, contrastive_loss = model(**batch_input)
 
             loss = loss_fn(logits, batch_labels)
+            if contrastive_loss is not None:
+                loss += contrastive_loss
             val_loss.append(loss.item())
 
             preds = torch.argmax(logits, dim=1).flatten()

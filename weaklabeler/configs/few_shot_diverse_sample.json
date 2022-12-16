@@ -1,0 +1,7 @@
+{
+    "positive": 0,
+    "negative": 1,
+    "other": 2,
+    "discuss": 3,
+    "neutral": 4
+}

@@ -72,10 +72,12 @@ def predict(texts:List , model:nn.Module, target_dict: Dict = {}, tokenizer: Aut
                 # create an other class for the prediction if no class has high probability
                 # print(prob.max().item(),target_dict[str(torch.argmax(prob).item())])
                 # print("_________________________________________")
-                if prob.max().item() < 0.5:
-                    predictions.append("NONE")
-                else:
-                    predictions.append(target_dict[str(torch.argmax(prob).item())])
+                # if prob.max().item() < 0.5:
+                #     predictions.append("other")
+                # else:
+                #     predictions.append(target_dict[str(torch.argmax(prob).item())])
+                
+                predictions.append(target_dict[str(torch.argmax(prob).item())])
 
 
         # inputs = [transformer_tok(text, tokenizer) for text in text_batch]
@@ -124,6 +126,8 @@ if __name__ == '__main__':
     help="Path to target config file, with the mapping from target to id"
     )
 
+    parser.add_argument('--output_path', default = "results.csv", help="Path to output file")
+
     parser.add_argument("--save_col", help="Name of column to save predictions")
     
 
@@ -134,9 +138,10 @@ if __name__ == '__main__':
     model.to("cuda")
 
     tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True)
-    test = pd.read_csv(args.test_path, index_col=0, chunksize=128)
+    test = pd.read_csv(args.test_path, index_col=0, chunksize=1e5)
     target_dict = get_targets(args.target_config_path)
 
+    # test[args.save_col] = predict(test[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
 
     print("Predicting...\n")
     # for chunk in test:
@@ -146,9 +151,9 @@ if __name__ == '__main__':
     for chunk in tqdm(test):
 
         chunk[args.save_col] = predict(chunk[args.text_col], model=model,target_dict=target_dict,tokenizer=tokenizer)
-        chunk.to_csv( 'results.csv', header=header, mode='a')
-
+        chunk.to_csv( args.output_path, header=header, mode='a')
+        # print(chunk)
 
         header = False
 
-    # test.to_csv('results.csv')
+    print("Done")
