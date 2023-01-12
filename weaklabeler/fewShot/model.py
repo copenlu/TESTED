@@ -72,10 +72,14 @@ class Transformer_classifier(nn.Module):
         logits = self.final_logits(last_hidden_states[:,0,:].view(-1, self.hidden_list[-1]))
         contrastive_loss = None
         contrastive_pairs = kwargs.get('contrastive_pairs', None)
-        if contrastive_pairs is not None:
+        if contrastive_pairs is not None :
             contrastive_meta = []
             contrastive_loss = 0.0
+            criterion = CosineEmbeddingLoss()
             for index in contrastive_pairs:
+                if len(contrastive_pairs[index]) == 0:
+                    continue
+
                 anchor = embedding.last_hidden_state[index, 0, :]
                 contrastive_embeddings = None
                 contrastive_labels = None
@@ -95,7 +99,6 @@ class Transformer_classifier(nn.Module):
                 # print(f"contrastive_embeddings: {contrastive_embeddings.shape}")
 
                 anchor = anchor.repeat(contrastive_embeddings.shape[0], 1)
-                criterion = CosineEmbeddingLoss()
                 contrastive_loss += criterion(anchor, contrastive_embeddings, contrastive_labels)
             contrastive_loss /= len(contrastive_pairs)
 

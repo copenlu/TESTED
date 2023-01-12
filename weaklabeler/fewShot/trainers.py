@@ -22,14 +22,14 @@ def get_optimizer(model, lr:float = 10e-5):
     # print([p for n, p in model.named_parameters()])
 
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay)], 'weight_decay':  1e-8},
         {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
-    optimizer = torch.optim.AdamW(optimizer_grouped_parameters, lr=lr)
+    optimizer = torch.optim.AdamW(optimizer_grouped_parameters, lr=lr, weight_decay= 1e-8)
     return optimizer
 
 def train_mlp(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoader, \
-    val_dataloader: DataLoader=None, epochs=10, patience:int = 5, val_step: int = 2, aim_run: Run = None) -> Union[Transformer_classifier, optim.AdamW]:
+    val_dataloader: DataLoader=None, epochs=10, patience:int = 2, val_step: int = 2, aim_run: Run = None) -> Union[Transformer_classifier, optim.AdamW]:
     """
     
 
@@ -98,9 +98,9 @@ def train_mlp(model: nn.Module, optimizer: optim.AdamW, train_dataloader:DataLoa
         avg_train_loss = total_loss / len(train_dataloader)
         aim_run.track(avg_train_loss , name = "Loss", context = {'type':'train'}, epoch=epoch_i)
 
-        if contrastive_loss is not None:
+        if total_contrastive_loss != 0:
             avg_contrastive_loss = total_contrastive_loss / len(train_dataloader)
-            aim_run.track(avg_contrastive_loss , name = "Contrastive_Loss", context = {'type':'train'}, epoch=epoch_i)
+            aim_run.track(avg_contrastive_loss , name = "Total_Contrastive_Loss", context = {'type':'train'}, epoch=epoch_i)
 
 
         if val_dataloader is not None and (epoch_i+1)%val_step == 0:

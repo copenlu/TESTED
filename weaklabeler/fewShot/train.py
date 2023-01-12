@@ -102,6 +102,9 @@ if __name__ == "__main__":
     parser.add_argument('--target_config_path',
                         help="Path to target config file, with the mapping from target to id")
 
+    parser.add_argument('--filter_out',
+                        help="The Filtering that should be applied using the coumn and name to \
+                            the data before proceeding. sperate with / as (col/name)")
 
     parser.add_argument('--num_labels', type=int, default=None, help="Number of labels")
     parser.add_argument('--linear_probe', action='store_true', help="Use linear probing", default=False)
@@ -117,17 +120,66 @@ if __name__ == "__main__":
 
     data = pd.read_csv(args.training_path)
 
+    if args.filter_out is not None:
+        print(args.filter_out)
+        filte_col, filter_name = args.filter_out.split("/")
+        data = data[data[filte_col] != filter_name]
+
+    print(len(data))
     ratio = 1.0 - (args.shot_num / len(data))
 
     if ratio < 0:
         raise ValueError("The number of examples to consider per few_shot experiment is larger than the number of examples in the dataset.")
 
+    texts = data[args.text_col].tolist()
+
     train_x, val_x, train_y, val_y = train_test_split(data[args.text_col],data[args.target_col] , \
                                     test_size=ratio, stratify = data[args.target_col], shuffle=True)
 
+
+    #statistics for length of sentences for train and val with distributio, median, mean, std, min, max
+    import numpy as np
+
+
+
+
+    print("Max length of sentence in train: ", max([len(x) for x in train_x.tolist()]))
+    print("Min length of sentence in train: ", min([len(x) for x in train_x.tolist()]))
+    print("Average length of sentence in train: ", sum([len(x) for x in train_x.tolist()])/len(train_x))
+    print("Median length of sentence in train: ", np.median([len(x) for x in train_x.tolist()]))
+
+
     if args.valid_path is not None:
         valid_data = pd.read_csv(args.valid_path)
-        val_x, val_y = valid_data[args.text_col], valid_data[args.target_col]
+        if args.filter_out is not None:
+            filte_col, filter_name = args.filter_out.split("/")
+            valid_data = valid_data[valid_data[filte_col] == filter_name]
+
+        val_x, val_y = valid_data['sentence'], valid_data[args.target_col]
+
+
+
+    print("__"*20)
+    print("Max length of sentence in val: ", max([len(x) for x in val_x.tolist()]))
+    print("Min length of sentence in val: ", min([len(x) for x in val_x.tolist()]))
+    print("Average length of sentence in val: ", sum([len(x) for x in val_x.tolist()])/len(val_x))
+    print("Median length of sentence in val: ", np.median([len(x) for x in val_x.tolist()]))
+
+    #plot the distribution of the length of sentences without outliers
+    # import matplotlib.pyplot as plt
+    # import seaborn as sns
+    # sns.set_style("darkgrid")
+    # sns.set_context("paper", font_scale=1.5, rc={"lines.linewidth": 2.5})
+
+    # plt.figure(figsize=(10,5))
+    # sns.distplot([len(x) for x in train_x.tolist()], bins=100, kde=False, rug=False, label="train")
+    # sns.distplot([len(x) for x in val_x.tolist()], bins=100, kde=False, rug=False, label="val")
+    # plt.legend()
+    # plt.title("Distribution of the length of sentences")
+    # plt.xlabel("Length of sentence")
+    # plt.ylabel("Frequency")
+    # plt.show()
+
 
     print("Training data size: ", len(train_x))
     print("Validation data size: ", len(val_x))
@@ -182,4 +234,11 @@ python weaklabeler/fewShot/train.py --experiment_name fewShot_epochs=5_n=128 --f
 --training_path weaklabeler/Data/few_shot_diverse_sample.csv --model_save_path weaklabeler/models/ \
 --num_labels 4 --batch_size 16 --epochs 5 --learning_rate 0.0001 --shot_num 512 --val_step 3 \
 --text_col sentence --target_col label_name --target_config_path weaklabeler/configs/few_shot_diverse_sample.json 
+"""
+
+"""
+python weaklabeler/fewShot/train.py --experiment_name fewShot_epochs=5_n=8000_contrastive=True --feat_extractor roberta-base \
+--training_path weaklabeler/Data/stance_data/few_shot_diverse_sample.csv --model_save_path weaklabeler/models/ \
+--num_labels 4 --batch_size 16 --epochs 5 --learning_rate 0.00001 --shot_num 8000 --val_step 1 \
+--text_col sentence --target_col label_name --target_config_path weaklabeler/configs/few_shot_diverse_sample.json --contrastive
 """

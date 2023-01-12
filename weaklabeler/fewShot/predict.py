@@ -56,14 +56,14 @@ def predict(texts:List , model:nn.Module, target_dict: Dict = {}, tokenizer: Aut
     model.eval()
     with torch.inference_mode():
 
-        for batch in dataloader:
+        for batch in tqdm(dataloader):
 
             batch_input = {k: v.to('cuda') for k, v in batch.items()}
             # batch_labels = batch_input['labels'].view(-1)
 
             # logits = model(**batch_input)
 
-            logits = model(**batch_input)
+            logits, contrastive_loss = model(**batch_input)
             probs = F.softmax(logits, dim=1)
 
             for index in range(len(probs)):
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     model = torch.load(args.model_path,'cuda')
     model.to("cuda")
 
-    tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.feat_extractor, use_fast=True, model_max_length=512)
     test = pd.read_csv(args.test_path, index_col=0, chunksize=1e5)
     target_dict = get_targets(args.target_config_path)
 

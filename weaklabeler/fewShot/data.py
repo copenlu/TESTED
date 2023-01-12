@@ -38,7 +38,12 @@ def contrastive_collate_fn(batch):
             else:
                 contrastive_examples[index].append((index2, torch.tensor([1]).to(labels.device)))
 
-    
+
+    # Hacky handling for the case where there is only one example per batch
+    if len(contrastive_examples[0]) == 1:
+        for index in contrastive_examples:
+            contrastive_examples[index] *= 2
+
     return {'input_ids': input_ids, 'attention_mask': attention_mask, 'labels': labels, 'contrastive_pairs': contrastive_examples}
 
 class FewShotData(Dataset):
