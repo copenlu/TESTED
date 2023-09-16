@@ -1,7 +1,32 @@
-# Weak Labeler
+# Topic-Guided Sampling For Data-Efficient Multi-Domain Stance Detection
+
+This is the official repository for the ACL 2023 "[Topic-Guided Sampling For Data-Efficient Multi-Domain Stance Detection](https://aclanthology.org/2023.acl-long.752.pdf)" paper.
+
+![Tested](https://github.com/copenlu/TESTED/assets/8036160/c3a141ee-c6e2-4534-b626-9424ab501eb9)
 
 
-The aim of the project is to classify the class of a given text within the designaed provided classes. 
+The task of Stance Detection is concerned with identifying the attitudes expressed by an author towards a target of interest. This task spans a variety of domains ranging from social media opinion identification to detecting the stance for a legal claim. However, the framing of the task varies within these domains in terms of the data collection protocol, the label dictionary and the number of available annotations. Furthermore, these stance annotations are significantly imbalanced on a per-topic and inter-topic basis. These make multi-domain stance detection challenging, requiring standardization and domain adaptation. To overcome this challenge, we propose Topic Efficient StancE Detection (TESTED), consisting of a topic-guided diversity sampling technique used for creating a multi-domain data efficient training set and a contrastive objective that is used for fine-tuning a stance classifier using the produced set. We evaluate the method on an existing benchmark of 16 datasets with in-domain, i.e. all topics seen and out-of-domain, i.e. unseen topics, experiments. The results show that the method outperforms the state-of-the-art with an average of 3.5 F1 points increase in-domain and is more generalizable with an averaged 10.2 F1 on out-of-domain evaluation while using <10% of the training data. We show that our sampling technique mitigates both inter- and per-topic class imbalances. Finally, our analysis demonstrates that the contrastive learning objective allows the model for a more pronounced segmentation of samples with varying labels.
+
+
+# Citations
+```
+@inproceedings{arakelyan-etal-2023-topic,
+    title = "Topic-Guided Sampling For Data-Efficient Multi-Domain Stance Detection",
+    author = "Arakelyan, Erik  and
+      Arora, Arnav  and
+      Augenstein, Isabelle",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.752",
+    doi = "10.18653/v1/2023.acl-long.752",
+    pages = "13448--13464",
+    abstract = "The task of Stance Detection is concerned with identifying the attitudes expressed by an author towards a target of interest. This task spans a variety of domains ranging from social media opinion identification to detecting the stance for a legal claim. However, the framing of the task varies within these domains in terms of the data collection protocol, the label dictionary and the number of available annotations. Furthermore, these stance annotations are significantly imbalanced on a per-topic and inter-topic basis. These make multi-domain stance detection challenging, requiring standardization and domain adaptation. To overcome this challenge, we propose Topic Efficient StancE Detection (TESTED), consisting of a topic-guided diversity sampling technique used for creating a multi-domain data efficient training set and a contrastive objective that is used for fine-tuning a stance classifier using the produced set. We evaluate the method on an existing benchmark of 16 datasets with in-domain, i.e. all topics seen and out-of-domain, i.e. unseen topics, experiments. The results show that the method outperforms the state-of-the-art with an average of 3.5 F1 points increase in-domain and is more generalizable with an averaged 10.2 F1 on out-of-domain evaluation while using {\textless}10{\%} of the training data. We show that our sampling technique mitigates both inter- and per-topic class imbalances. Finally, our analysis demonstrates that the contrastive learning objective allows the model for a more pronounced segmentation of samples with varying labels.",
+}
+```
+
 
 Before proceeding further please install the module for further use:
 
@@ -46,11 +71,6 @@ python main.py --model_name vicgalle/xlm-roberta-large-xnli-anli --dataset_path 
 
 ```
 
-
-
-## Codebase
-
-The codebase is fully documented and optimised for parallel processing across various nodes and gpu's. The Deep Learning modules are completely differentiable with a complete experimental architecture and hyperparameter tracking integrated within the codebase.
 
 ## Results
 
